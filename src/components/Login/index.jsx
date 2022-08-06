@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Header from '../Header/index.jsx';
 
 export default function Login() {
@@ -13,7 +14,7 @@ export default function Login() {
                     <input placeholder='Email' type='email' />
                     <input placeholder='Senha' type='password' />
                     <button>ENTRAR</button>
-                    <a>Não tem conta? Que tal criar uma?</a>
+                    <Link to={'/'}>Não tem conta? Que tal criar uma?</Link>
                 </LoginBanner>
             </LoginContainer>
         </>
