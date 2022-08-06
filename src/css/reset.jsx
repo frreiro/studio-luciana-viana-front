@@ -44,6 +44,11 @@ const ResetStyles = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+    button, input{
+        outline: none;
+        border: none;
+
+    }
 `;
 
 export default ResetStyles;
