@@ -33,7 +33,9 @@ export const loginSchema = joi.object({
     email: joi.string().email({ tlds: { allow: false } }).required().messages({
         'string.empty': 'Email precisa ser um email válido'
     }),
-    password: joi.string().required().messages({
+    password: joi.string().min(8).required().messages({
         'string.empty': 'Senha é obrigatório',
+        'string.min': 'Senha precisa ter no mínimo 8 digitos'
+
     }),
 });
