@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import ResetStyles from '../../css/reset.jsx';
 import GlobalStyles from '../../css/global.jsx';
-// import Schedule from '../Schedule/index.jsx';
+import Booking from '../Booking/index.jsx';
 import Login from '../Login/index.jsx';
 import Signup from '../Singup/index.jsx';
 import { TokenProvider } from '../../context/tokenContext.jsx';
@@ -16,8 +16,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Signup />} />
                     <Route path="/login" element={<Login />} />
-
-                    {/* <Route path="/" element={<Schedule />} /> */}
+                    <Route path="/booking" element={<Booking />} />
                     {/* <Route path="/about" element={<BrowserRouter />} /> */}
                     {/* <Route path="/" /> */}
                 </Routes>

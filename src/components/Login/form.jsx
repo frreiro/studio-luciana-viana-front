@@ -19,6 +19,7 @@ export default function LoginForm() {
     async function onSubmit(data) {
         const token = await loginUser(data);
         setToken(token);
+        console.log(token);
     }
 
     function handleError({ message }) {
@@ -27,9 +28,9 @@ export default function LoginForm() {
     return (
         <>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <input placeholder='Email' type='email' value={'pedro@uol.com'} {...register('email')} />
+                <input placeholder='Email' type='email' {...register('email')} />
                 <ErrorMessage name='email' errors={errors} render={handleError} />
-                <input placeholder='Senha' type='password' value={'12345678'} {...register('password')} />
+                <input placeholder='Senha' type='password' {...register('password')} />
                 <ErrorMessage name='password' errors={errors} render={handleError} />
                 <button type='submit'>ENTRAR</button>
             </Form>
