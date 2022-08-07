@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../Header/index.jsx';
 import RadioForm from './radioForm.jsx';
-import { getUserNameAndEmail } from '../../services/booking.js';
+import { Link } from 'react-router-dom';
+import { getHistoric, getUserNameAndEmail } from '../../services/booking.js';
 import { useContext, useState } from 'react';
 import { TokenContext } from '../../context/tokenContext.jsx';
 import Calendly from './calendly.jsx';
@@ -12,15 +13,37 @@ export default function Booking() {
 
     const [user, setUser] = useState({});
     const [spots, setSpots] = useState({});
-    const [canBooking, setCanBooking] = useState(false);
+
+
+
+
+    const [bookingMessage, setBookingMessage] = useState(null);
 
     const { token } = useContext(TokenContext);
     async function onSubmit(spotsChooses) {
         const user = await getUserNameAndEmail(token);
+        const historic = await getHistoric(token);
+        console.log(user, historic);
+        if (!historic) setBookingMessage(noHistoricText);
+        else setBookingMessage(calendly);
+
         setSpots(spotsChooses);
-        setCanBooking(true);
         setUser(user);
     }
+
+
+    const noHistoricText = <MissContent>
+        <p className='side-text'>
+            INFELIZMENTE VOCÊ NÃO TEM <br />
+            UM HISTÓRICO ATUALIZADO, <br />
+            PARA REALIZAR UM AGENDAMENTO <br />
+            É NECESSÁRIO TER UM HISTÓRICO <br />
+            CADASTRADO
+        </p>
+        <Link to='/historic'>Cique aqui para cadastrar seu histórico</Link>
+    </MissContent>;
+    // const noAssessmentText = <p className='side-text'>INFELIZMENTE VOCÊ NÃO TEM <br />  UMA AVALIAÇÃO ATUALIZADO, <br /> PARA REALIZAR UM AGENDAMENTO <br /> É NECESSÁRIO TER UMA AVALIAÇÃO <br />CADASTRADA</p>;
+    const calendly = <Calendly user={user} spots={spots} />;
 
     return (
         <>
@@ -32,11 +55,10 @@ export default function Booking() {
                     <p className='subtitle'>Escolha o procedimento:</p>
                     <RadioForm onSubmit={onSubmit} />
                 </AppointmentBanner>
-                {canBooking
-                    ? <Calendly user={user} spots={spots} />
+                {bookingMessage
+                    ? bookingMessage
                     : <p className='side-text'>SELECIONE O LUGAR <br />  O QUAL DESEJE QUE SEJA <br /> APLICADO A EPILAÇÃO</p>
                 }
-
             </MainTag>
         </>
     );
@@ -53,7 +75,7 @@ const MainTag = styled.div`
 
 
 
-    p{
+    p, a{
         font-family: var(--body-font);
         color: var(--third-color);
         font-weight: 300;
@@ -99,4 +121,9 @@ const AppointmentBanner = styled.article`
     }
 `;
 
+const MissContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 
