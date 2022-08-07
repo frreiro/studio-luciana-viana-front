@@ -14,8 +14,8 @@ export default function App() {
             <GlobalStyles />
             <TokenProvider>
                 <Routes>
-                    <Route path="/" element={<Signup />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
                     <Route path="/booking" element={<Booking />} />
                     {/* <Route path="/about" element={<BrowserRouter />} /> */}
                     {/* <Route path="/" /> */}

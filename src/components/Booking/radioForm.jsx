@@ -2,20 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 
-
-export default function RadioForm() {
+export default function RadioForm({ onSubmit }) {
     const { register, handleSubmit } = useForm({
     });
 
-    async function onSubmit(data) {
-        console.log(data);
-    }
     return (
         <>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <div className='checkbox-group1'>
                     <Checkbox >
-                        <input type='checkbox'  {...register('buco')} />
+                        <input type='checkbox'  {...register('buço')} />
                         <span className='checkbox-custom'></span>
                         <p>BUÇO</p>
                     </Checkbox>
@@ -30,14 +26,14 @@ export default function RadioForm() {
                         <p>AXILA</p>
                     </Checkbox>
                     <Checkbox >
-                        <input type='checkbox'  {...register('abdomen')} />
+                        <input type='checkbox'  {...register('abdômen')} />
                         <span className='checkbox-custom'></span>
                         <p>ABDÔMEN</p>
                     </Checkbox>
                 </div>
                 <div className='checkbox-group2'>
                     <Checkbox >
-                        <input type='checkbox' {...register('virilha-full')} />
+                        <input type='checkbox' {...register('virilha-completa')} />
                         <span className='checkbox-custom'></span>
                         <p>VIRILHA<br />COMPLETA</p>
                     </Checkbox>
@@ -47,7 +43,7 @@ export default function RadioForm() {
                         <p>MEIA<br />PERNA</p>
                     </Checkbox>
                     <Checkbox >
-                        <input type='checkbox' {...register('perna-full')} />
+                        <input type='checkbox' {...register('perna-completa')} />
                         <span className='checkbox-custom'></span>
                         <p>PERNA<br />INTEIRA</p>
                     </Checkbox>

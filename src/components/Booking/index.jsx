@@ -2,8 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../Header/index.jsx';
 import RadioForm from './radioForm.jsx';
+import { getUserNameAndEmail } from '../../services/booking.js';
+import { useContext, useState } from 'react';
+import { TokenContext } from '../../context/tokenContext.jsx';
+import Calendly from './calendly.jsx';
+
 
 export default function Booking() {
+
+    const [user, setUser] = useState({});
+    const [spots, setSpots] = useState({});
+    const [canBooking, setCanBooking] = useState(false);
+
+    const { token } = useContext(TokenContext);
+    async function onSubmit(spotsChooses) {
+        const user = await getUserNameAndEmail(token);
+        setSpots(spotsChooses);
+        setCanBooking(true);
+        setUser(user);
+    }
+
     return (
         <>
             <Header />
@@ -12,8 +30,13 @@ export default function Booking() {
                     <h1 className='title'>AGENDAMENTO</h1>
                     <hr />
                     <p className='subtitle'>Escolha o procedimento:</p>
-                    <RadioForm />
+                    <RadioForm onSubmit={onSubmit} />
                 </AppointmentBanner>
+                {canBooking
+                    ? <Calendly user={user} spots={spots} />
+                    : <p className='side-text'>SELECIONE O LUGAR <br />  O QUAL DESEJE QUE SEJA <br /> APLICADO A EPILAÇÃO</p>
+                }
+
             </MainTag>
         </>
     );
@@ -21,7 +44,28 @@ export default function Booking() {
 
 
 const MainTag = styled.div`
-    padding: 108px 0px 0 47px;
+    width: 100vw;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    padding: 108px 47px 0 47px;
+    position: relative;
+
+
+
+    p{
+        font-family: var(--body-font);
+        color: var(--third-color);
+        font-weight: 300;
+    }
+
+    .side-text{
+
+        font-family: var(--title-font);
+        font-size: 25px;
+        text-align: center;
+        line-height: 40px;
+    }
     `;
 
 
@@ -49,12 +93,6 @@ const AppointmentBanner = styled.article`
         margin-bottom: 89px;
     }
 
-    p{
-        font-family: var(--body-font);
-        color: var(--third-color);
-        font-weight: 300;
-
-    }
 
     .subtitle{
         font-size: 30px;

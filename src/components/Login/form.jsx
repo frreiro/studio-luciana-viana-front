@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useContext } from 'react';
 import { TokenContext } from '../../context/tokenContext.jsx';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import { ErrorMessage } from '@hookform/error-message';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { loginSchema } from '../../schemas/formSchemas';
@@ -15,11 +16,13 @@ export default function LoginForm() {
         criteriaMode: 'all',
     });
 
+    const navigate = useNavigate();
     const { setToken } = useContext(TokenContext);
     async function onSubmit(data) {
         const token = await loginUser(data);
+        localStorage.setItem('studio-token', token);
         setToken(token);
-        console.log(token);
+        navigate('/booking');
     }
 
     function handleError({ message }) {
