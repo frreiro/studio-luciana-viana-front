@@ -6,6 +6,7 @@ import Booking from '../Booking/index.jsx';
 import Login from '../Login/index.jsx';
 import Signup from '../Singup/index.jsx';
 import { TokenProvider } from '../../context/tokenContext.jsx';
+import Historic from '../Historic/index.jsx';
 
 export default function App() {
     return (
@@ -17,6 +18,8 @@ export default function App() {
                     <Route path="/" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/booking" element={<Booking />} />
+                    <Route path="/historic" element={<Historic />} />
+
                     {/* <Route path="/about" element={<BrowserRouter />} /> */}
                     {/* <Route path="/" /> */}
                 </Routes>

@@ -13,10 +13,6 @@ export default function Booking() {
 
     const [user, setUser] = useState({});
     const [spots, setSpots] = useState({});
-
-
-
-
     const [bookingMessage, setBookingMessage] = useState(null);
 
     const { token } = useContext(TokenContext);
