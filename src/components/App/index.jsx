@@ -7,6 +7,7 @@ import Login from '../Login/index.jsx';
 import Signup from '../Singup/index.jsx';
 import { TokenProvider } from '../../context/tokenContext.jsx';
 import Historic from '../Historic/index.jsx';
+import { UserProvider } from '../../context/userContext.jsx';
 
 export default function App() {
     return (
@@ -14,15 +15,17 @@ export default function App() {
             <ResetStyles />
             <GlobalStyles />
             <TokenProvider>
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/booking" element={<Booking />} />
-                    <Route path="/historic" element={<Historic />} />
+                <UserProvider>
+                    <Routes>
+                        <Route path="/" element={<Login />} />
+                        <Route path="/signup" element={<Signup />} />
+                        <Route path="/booking" element={<Booking />} />
+                        <Route path="/historic" element={<Historic />} />
 
-                    {/* <Route path="/about" element={<BrowserRouter />} /> */}
-                    {/* <Route path="/" /> */}
-                </Routes>
+                        {/* <Route path="/about" element={<BrowserRouter />} /> */}
+                        {/* <Route path="/" /> */}
+                    </Routes>
+                </UserProvider>
             </TokenProvider>
         </BrowserRouter>
     );
