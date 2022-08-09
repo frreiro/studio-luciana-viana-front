@@ -12,6 +12,7 @@ const globalStyle = createGlobalStyle`
     }
     body *{
         box-sizing: border-box;
+        border: none;
     }
     button{
         font-family: var(--body-font);

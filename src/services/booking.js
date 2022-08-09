@@ -13,11 +13,3 @@ export async function getUserNameAndEmail(token) {
     return response.data;
 }
 
-export async function getHistoric(token) {
-    try {
-        const response = await api.get('/historic', config(token));
-        return response.data;
-    } catch (e) {
-        if (e.response.status === 404) return null;
-    }
-}

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import Header from '../Header/index.jsx';
 import RadioForm from './radioForm.jsx';
 import { Link } from 'react-router-dom';
-import { getHistoric, getUserNameAndEmail } from '../../services/booking.js';
+import { getUserNameAndEmail } from '../../services/booking.js';
+import { getHistoric } from '../../services/historic.js';
 import { useContext, useState } from 'react';
 import { TokenContext } from '../../context/tokenContext.jsx';
 import Calendly from './calendly.jsx';
@@ -19,10 +20,8 @@ export default function Booking() {
     async function onSubmit(spotsChooses) {
         const user = await getUserNameAndEmail(token);
         const historic = await getHistoric(token);
-        console.log(user, historic);
         if (!historic) setBookingMessage(noHistoricText);
         else setBookingMessage(calendly);
-
         setSpots(spotsChooses);
         setUser(user);
     }

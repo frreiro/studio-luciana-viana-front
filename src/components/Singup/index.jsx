@@ -14,7 +14,7 @@ export default function Signup() {
                     <h1 className='title'>CADASTRO</h1>
                     <hr />
                     <SignupForm />
-                    <Link to={'/login'}>Já tenho conta</Link>
+                    <Link to={'/'}>Já tenho conta</Link>
                 </LoginBanner>
             </LoginContainer>
         </>

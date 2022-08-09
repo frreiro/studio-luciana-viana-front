@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router';
 import logoStudio from '../../assets/logo_studio_4x.png';
 
 export default function Header() {
+    const navigate = useNavigate();
     return (
         <HeaderTag>
             <NavBar>
-                <p className='agendamento'>AGENDAMENTO</p>
+                <p className='agendamento' onClick={() => navigate('/booking')}>AGENDAMENTO</p>
                 <p className='procedimento'>PROCEDIMENTOS</p>
                 <hr />
-                <p className='historico'>HISTÓRICO</p>
-                <p className='avaliacao'>AVALIAÇÃO</p>
+                <p className='historico' onClick={() => navigate('/historic')}>HISTÓRICO</p>
+                <p className='avaliacao' onClick={() => navigate('/assessment')}>AVALIAÇÃO</p>
             </NavBar>
             <LogoTag>
                 <img src={logoStudio} />

@@ -1,10 +1,48 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import { TokenContext } from '../../context/tokenContext.jsx';
+import { updateHistoric } from '../../services/historic.js';
+import { createHistoric } from '../../services/historic.js';
 
-export default function HistoricForm({ onSubmit }) {
-    const { register, handleSubmit } = useForm({
+
+export default function HistoricForm({ enableForm, historic }) {
+    const { register, handleSubmit, watch, setValue } = useForm({
     });
+    const isEdditing = Object.keys(historic).length > 1 ? true : false;
+
+    useEffect(() => {
+        if (isEdditing) {
+            for (const prop in historic) {
+                if (historic[prop] === null) setValue(prop.substring(0, prop.length - 1), 'false');
+                if (historic[prop] !== null && prop !== 'pregnancy' && prop !== 'id') setValue(prop.substring(0, prop.length - 1), 'true');
+                if (prop === 'pregnancy') return setValue(prop, `${historic[prop]}`);
+                setValue(prop, historic[prop]);
+            }
+        }
+
+    }, []);
+
+    function parseInputValue(booleanInputName, inputName) {
+        const watchInput = JSON.parse(watch(booleanInputName, false));
+        if (!watchInput) setValue(inputName, null);
+        return watchInput;
+    }
+
+    const { token } = useContext(TokenContext);
+    async function onSubmit(data) {
+        delete data.alergie;
+        delete data.familyAlergie;
+        delete data.medicine;
+        delete data.skinDesease;
+        delete data?.id;
+        if (isEdditing) {
+            await updateHistoric({ ...data, pregnancy: JSON.parse(data.pregnancy) }, token, historic.id);
+        }
+        else await createHistoric({ ...data, pregnancy: JSON.parse(data.pregnancy) }, token);
+
+        enableForm(false);
+    }
 
     return (
         <>
@@ -13,64 +51,64 @@ export default function HistoricForm({ onSubmit }) {
                     <Title>Alergias:</Title>
                     <InputGroup>
                         <RadioBox >
-                            <input type='radio' value={false} {...register('alergia')} />
+                            <input type='radio' value={false} defaultChecked={true} {...register('alergie')} />
                             <span className='radio-custom'></span>
                             <p>NÃO</p>
                         </RadioBox>
                         <RadioBox >
-                            <input type='radio' value={true} {...register('alergia')} />
+                            <input type='radio' value={true} {...register('alergie')} />
                             <span className='radio-custom'></span>
                             <p>SIM</p>
                         </RadioBox>
-                        <InputText placeholder='Quais' type='text' {...register('alergies')} />
+                        <InputText placeholder='Quais' disabled={!parseInputValue('alergie', 'alergies')} type='text' {...register('alergies')} />
                     </InputGroup>
                 </div>
                 <div className='form-group'>
                     <Title>Histórico de alergias na família:</Title>
                     <InputGroup>
                         <RadioBox >
-                            <input type='radio' value={false} {...register('familia-alergia')} />
+                            <input type='radio' value={false} defaultChecked={true} {...register('familyAlergie')} />
                             <span className='radio-custom'></span>
                             <p>NÃO</p>
                         </RadioBox>
                         <RadioBox >
-                            <input type='radio' value={true} {...register('familia-alergia')} />
+                            <input type='radio' value={true} {...register('familyAlergie')} />
                             <span className='radio-custom'></span>
                             <p>SIM</p>
                         </RadioBox>
-                        <InputText placeholder='Quais' type='text' {...register('familyAlergies')} />
+                        <InputText placeholder='Quais' disabled={!parseInputValue('familyAlergie', 'familyAlergies')} type='text' {...register('familyAlergies')} />
                     </InputGroup>
                 </div>
                 <div className='form-group'>
                     <Title>Já teve alguma doença de pele:</Title>
                     <InputGroup>
                         <RadioBox >
-                            <input type='radio' value={false} {...register('doença-pele')} />
+                            <input type='radio' value={false} defaultChecked={true} {...register('skinDesease')} />
                             <span className='radio-custom'></span>
                             <p>NÃO</p>
                         </RadioBox>
                         <RadioBox >
-                            <input type='radio' value={true} {...register('doença-pele')} />
+                            <input type='radio' value={true} {...register('skinDesease')} />
                             <span className='radio-custom'></span>
                             <p>SIM</p>
                         </RadioBox>
-                        <InputText placeholder='Quais' type='text' {...register('skinDesease')} />
+                        <InputText placeholder='Quais' disabled={!parseInputValue('skinDesease', 'skinDeseases')} type='text' {...register('skinDeseases')} />
                     </InputGroup>
                 </div>
                 <div className='form-group'>
                     <Title>Cosmédicos e medicamentos em uso?</Title>
                     <InputGroup>
                         <RadioBox >
-                            <input type='radio' value={false} {...register('medicamento')} />
+                            <input type='radio' value={false} defaultChecked={true} {...register('medicine')} />
                             <span className='radio-custom'></span>
                             <p>NÃO</p>
                         </RadioBox>
                         <RadioBox >
-                            <input type='radio' value={true} {...register('medicamento')} />
+                            <input type='radio' value={true} {...register('medicine')} />
                             <span className='radio-custom'></span>
                             <p>SIM</p>
                         </RadioBox>
-                        <InputText placeholder='Quais' type='text' {...register('medicines')} />
+                        <InputText placeholder='Quais' disabled={!parseInputValue('medicine', 'medicines')} type='text' {...register('medicines')} />
                     </InputGroup>
                 </div>
                 <div className='form-group'>
@@ -78,19 +116,19 @@ export default function HistoricForm({ onSubmit }) {
                         <Title>Gravidez</Title>
                         <InputGroup>
                             <RadioBox >
-                                <input type='radio' value={false} {...register('medicamento')} />
+                                <input type='radio' value={false} defaultChecked={true} {...register('pregnancy')} />
                                 <span className='radio-custom'></span>
                                 <p>NÃO</p>
                             </RadioBox>
                             <RadioBox >
-                                <input type='radio' value={true} {...register('medicamento')} />
+                                <input type='radio' value={true} {...register('pregnancy')} />
                                 <span className='radio-custom'></span>
                                 <p>SIM</p>
                             </RadioBox>
                         </InputGroup>
                     </div>
                 </div>
-                <button type='submit'>PRÓXIMO</button>
+                <button type='submit'>SALVAR</button>
             </Form>
         </>
     );

@@ -1,15 +1,26 @@
 
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../Header/index.jsx';
 import HistoricForm from './form.jsx';
+import HistoricUser from './historicUser.jsx';
+import { TokenContext } from '../../context/tokenContext.jsx';
+import { getHistoric } from '../../services/historic.js';
 
-export default function Booking() {
 
-    function onSubmit(data) {
-        console.log(data);
+export default function Historic() {
 
-    }
+    const [historic, setHistoric] = useState({});
+    const [enableForm, setEnableForm] = useState(false);
+
+    const { token } = useContext(TokenContext);
+    useEffect(async () => {
+        const userHistoric = await getHistoric(token);
+        if (userHistoric) return setHistoric(userHistoric);
+
+    }, [enableForm]);
+
+
 
     return (
         <>
@@ -18,8 +29,37 @@ export default function Booking() {
                 <HistoricBanner>
                     <h1 className='title'>HISTÓRICO</h1>
                     <hr />
-                    <HistoricForm onSubmit={onSubmit} />
+                    {!enableForm && Object.keys(historic).length > 1
+                        ? <HistoricUser historic={historic} enableForm={setEnableForm} />
+                        : enableForm ? <HistoricForm enableForm={setEnableForm} historic={historic} />
+                            : <>
+                                <p className='not-found'>
+                                    Nenhum histórico cadastrado
+                                </p>
+                                <Button onClick={() => setEnableForm(!enableForm)}>CADASTRAR</Button>
+                            </>
+                    }
                 </HistoricBanner>
+                <MissContent>
+                    <p className='side-text'>
+                        OLÁ, FULANA.<br />
+                        NESTA TELA VOCÊ PODERÁ <br />
+                        CONSULTAR SUAS INFORMAÇÕES <br />
+                        SOBRE O SEU HISTÓRICO <br />
+                    </p>
+                    <p className='side-text'>
+                        AQUI VOCÊ ENCONTRA DADOS<br />
+                        QUE VOCÊ MESMA NOS INFORMOU <br />
+                        SOBRE SUAS ALERGIAS, <br />
+                        DOENÇAS DE PELE, ETC
+                        <br />
+                    </p>
+                    <p className='side-text'>
+                        SINTA-SE LIVRE PARA ALTERAR<br />
+                        OU REMOVER ALGUMA <br />
+                        INFORMAÇÃO <br />
+                    </p>
+                </MissContent>
             </MainTag>
         </>
     );
@@ -39,6 +79,11 @@ const MainTag = styled.div`
     p{
         font-family: var(--body-font);
         color: var(--third-color);
+    }
+
+
+    .not-found{
+        padding: 70px;
     }
 
     .side-text{
@@ -81,3 +126,24 @@ const HistoricBanner = styled.article`
     }
 `;
 
+const MissContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p{
+        margin-bottom: 42px;
+    }
+`;
+
+const Button = styled.button`
+    width:302px;
+    height:51px;
+    font-family: var(--body-font);
+    font-weight: lighter;
+    font-size: 25px;
+    color: white;
+    background-color: var(--button-color);
+    border-radius: 5px;
+    margin-top: 300px;
+`;

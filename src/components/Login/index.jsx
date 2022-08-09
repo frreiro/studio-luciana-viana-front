@@ -13,7 +13,7 @@ export default function Login() {
                     <h1 className='title'>LOGIN</h1>
                     <hr />
                     <LoginForm />
-                    <Link to={'/'}>Não tem conta? Que tal criar uma?</Link>
+                    <Link to={'/signup'}>Não tem conta? Que tal criar uma?</Link>
                 </LoginBanner>
             </LoginContainer>
         </>
