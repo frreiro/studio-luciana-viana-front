@@ -6,6 +6,7 @@ import HistoricForm from './form.jsx';
 import HistoricUser from './historicUser.jsx';
 import { TokenContext } from '../../context/tokenContext.jsx';
 import { getHistoric } from '../../services/historic.js';
+import { UserContext } from '../../context/userContext.jsx';
 
 
 export default function Historic() {
@@ -14,6 +15,9 @@ export default function Historic() {
     const [enableForm, setEnableForm] = useState(false);
 
     const { token } = useContext(TokenContext);
+    const { user } = useContext(UserContext);
+    console.log(user);
+
     useEffect(async () => {
         const userHistoric = await getHistoric(token);
         if (userHistoric) return setHistoric(userHistoric);
@@ -42,7 +46,7 @@ export default function Historic() {
                 </HistoricBanner>
                 <MissContent>
                     <p className='side-text'>
-                        OLÁ, FULANA.<br />
+                        OLÁ, {user?.name.split(' ')[0].toUpperCase()}<br />
                         NESTA TELA VOCÊ PODERÁ <br />
                         CONSULTAR SUAS INFORMAÇÕES <br />
                         SOBRE O SEU HISTÓRICO <br />
