@@ -3,30 +3,33 @@ import styled from 'styled-components';
 import Header from '../Header/index.jsx';
 import RadioForm from './radioForm.jsx';
 import { Link } from 'react-router-dom';
-import { getUserNameAndEmail } from '../../services/booking.js';
 import { getHistoric } from '../../services/historic.js';
 import { useContext, useState } from 'react';
 import { TokenContext } from '../../context/tokenContext.jsx';
+import { UserContext } from '../../context/userContext.jsx';
 import Calendly from './calendly.jsx';
 
 
 export default function Booking() {
-
-    const [user, setUser] = useState({});
+    const { user } = useContext(UserContext);
+    const [sideView, setSideView] = useState(null);
     const [spots, setSpots] = useState({});
-    const [bookingMessage, setBookingMessage] = useState(null);
 
     const { token } = useContext(TokenContext);
     async function onSubmit(spotsChooses) {
-        const user = await getUserNameAndEmail(token);
-        const historic = await getHistoric(token);
-        if (!historic) setBookingMessage(noHistoricText);
-        else setBookingMessage(calendly);
         setSpots(spotsChooses);
-        setUser(user);
+        const historic = await getHistoric(token);
+        if (!historic) {
+            setSideView('noHistoric');
+        }
+        else {
+            setSideView('calendly');
+        }
     }
 
 
+    console.log(spots);
+    const calendly = <Calendly user={user} spots={spots} />;
     const noHistoricText = <MissContent>
         <p className='side-text'>
             INFELIZMENTE VOCÊ NÃO TEM <br />
@@ -37,8 +40,11 @@ export default function Booking() {
         </p>
         <Link to='/historic'>Cique aqui para cadastrar seu histórico</Link>
     </MissContent>;
+    const defaultMessage = <p className='side-text'>
+        SELECIONE O LUGAR
+        <br />  O QUAL DESEJE QUE SEJA <br />
+        APLICADO A EPILAÇÃO</p>;
     // const noAssessmentText = <p className='side-text'>INFELIZMENTE VOCÊ NÃO TEM <br />  UMA AVALIAÇÃO ATUALIZADO, <br /> PARA REALIZAR UM AGENDAMENTO <br /> É NECESSÁRIO TER UMA AVALIAÇÃO <br />CADASTRADA</p>;
-    const calendly = <Calendly user={user} spots={spots} />;
 
     return (
         <>
@@ -50,9 +56,13 @@ export default function Booking() {
                     <p className='subtitle'>Escolha o procedimento:</p>
                     <RadioForm onSubmit={onSubmit} />
                 </AppointmentBanner>
-                {bookingMessage
-                    ? bookingMessage
-                    : <p className='side-text'>SELECIONE O LUGAR <br />  O QUAL DESEJE QUE SEJA <br /> APLICADO A EPILAÇÃO</p>
+                {sideView ?
+                    sideView === 'calendly' ? calendly :
+                        sideView === 'noHistoric' ? noHistoricText :
+                            defaultMessage
+                    :
+                    defaultMessage
+
                 }
             </MainTag>
         </>

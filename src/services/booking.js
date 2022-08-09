@@ -9,7 +9,11 @@ const config = (token) => {
 };
 
 export async function getUserNameAndEmail(token) {
-    const response = await api.get('/user', config(token));
-    return response.data;
+    try {
+        const response = await api.get('/user', config(token));
+        return response.data;
+    } catch (e) {
+        console.log(e);
+    }
 }
 

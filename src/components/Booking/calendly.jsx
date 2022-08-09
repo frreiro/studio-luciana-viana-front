@@ -3,6 +3,7 @@ import { InlineWidget } from 'react-calendly';
 import createText from '../utils/createText.js';
 
 export default function Calendly({ user, spots }) {
+    console.log(spots);
     const prefill = {
         name: user.name,
         email: user.email,
@@ -10,6 +11,7 @@ export default function Calendly({ user, spots }) {
             a1: createText(spots),
         },
     };
+
 
     return (
         <>
