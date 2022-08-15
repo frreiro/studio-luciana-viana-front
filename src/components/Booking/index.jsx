@@ -75,7 +75,6 @@ export default function Booking() {
                             sideView === 'noAssessmentText' ? noAssessmentText : defaultMessage
                     :
                     defaultMessage
-
                 }
             </MainTag>
         </>

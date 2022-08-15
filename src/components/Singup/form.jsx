@@ -15,7 +15,7 @@ export default function SignupForm() {
     const navigate = useNavigate();
     async function onSubmit(data) {
         const res = await createUser(data);
-        if (res === 'Created') navigate('/login');
+        if (res === 'Created') navigate('/');
     }
 
     function handleError({ message }) {

@@ -8,8 +8,8 @@ export default function Header() {
     return (
         <HeaderTag>
             <NavBar>
+                <p className='procedimento' onClick={() => navigate('/')}>LOGIN</p>
                 <p className='agendamento' onClick={() => navigate('/booking')}>AGENDAMENTO</p>
-                <p className='procedimento'>PROCEDIMENTOS</p>
                 <hr />
                 <p className='historico' onClick={() => navigate('/historic')}>HISTÓRICO</p>
                 <p className='avaliacao' onClick={() => navigate('/assessment')}>AVALIAÇÃO</p>
