@@ -12,10 +12,11 @@ import { getAssesment } from '../../services/assessment.js';
 
 
 export default function Booking() {
-    const { user } = useContext(UserContext);
+
     const [sideView, setSideView] = useState(null);
     const [spots, setSpots] = useState({});
 
+    const { user } = useContext(UserContext);
     const { token } = useContext(TokenContext);
     async function onSubmit(spotsChooses) {
         setSpots(spotsChooses);

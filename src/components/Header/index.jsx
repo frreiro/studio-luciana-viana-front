@@ -18,7 +18,6 @@ export default function Header() {
                 <img src={logoStudio} />
             </LogoTag>
         </HeaderTag>
-
     );
 }
 

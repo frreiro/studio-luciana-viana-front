@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Header from '../Header/index.jsx';
 import LoginForm from './form.jsx';
 
 export default function Login() {
     return (
         <>
-            <Header />
             <LoginContainer>
                 <LoginBanner>
                     <h1 className='title'>LOGIN</h1>

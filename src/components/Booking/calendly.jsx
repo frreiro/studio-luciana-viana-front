@@ -17,7 +17,7 @@ export default function Calendly({ user, spots }) {
         <>
             <InlineWidget
                 iframeTitle="Calendly Schedule"
-                url="https://calendly.com/lucasvfv/30min"
+                url="https://calendly.com/lucasvfv/epilacao"
                 styles={StyleSheet}
                 prefill={prefill} />
         </>
