@@ -54,13 +54,16 @@ export default function Assessment() {
                         OLÁ, {user?.name.split(' ')[0].toUpperCase()}<br />
                         NESTA TELA VOCÊ PODERÁ <br />
                         CONSULTAR SUAS INFORMAÇÕES <br />
-                        SOBRE O SEU HISTÓRICO <br />
+                        SOBRE O SEU AVALIAÇÃO <br />
                     </p>
                     <p className='side-text'>
+
+
                         AQUI VOCÊ ENCONTRA DADOS<br />
                         QUE VOCÊ MESMA NOS INFORMOU <br />
-                        SOBRE SUAS ALERGIAS, <br />
-                        DOENÇAS DE PELE, ETC
+                        SOBRE A SENSIBILIDADE<br />
+                        DA SUA PELE, COMO MANCHAS,<br />
+                        TIPO DE PELE, FERIDAS, ETC
                         <br />
                     </p>
                     <p className='side-text'>

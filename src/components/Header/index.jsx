@@ -53,12 +53,12 @@ const NavBar = styled.nav`
     width: 100vw;
     display: flex;
     justify-content: space-between;
-    padding: 70px 20px 0 20px;
+    padding: 60px 20px 0 20px;
 
     p{
         font-family: var(--header-font);
         font-weight: 400;
-        font-size: 15px;
+        font-size: 24px;
         color: var(--third-color);
         cursor: pointer;
     }

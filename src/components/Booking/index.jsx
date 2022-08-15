@@ -8,6 +8,7 @@ import { useContext, useState } from 'react';
 import { TokenContext } from '../../context/tokenContext.jsx';
 import { UserContext } from '../../context/userContext.jsx';
 import Calendly from './calendly.jsx';
+import { getAssesment } from '../../services/assessment.js';
 
 
 export default function Booking() {
@@ -19,8 +20,12 @@ export default function Booking() {
     async function onSubmit(spotsChooses) {
         setSpots(spotsChooses);
         const historic = await getHistoric(token);
+        const assessment = await getAssesment(token);
         if (!historic) {
             setSideView('noHistoric');
+        }
+        else if (!assessment) {
+            setSideView('noAssessmentText');
         }
         else {
             setSideView('calendly');
@@ -44,7 +49,15 @@ export default function Booking() {
         SELECIONE O LUGAR
         <br />  O QUAL DESEJE QUE SEJA <br />
         APLICADO A EPILAÇÃO</p>;
-    // const noAssessmentText = <p className='side-text'>INFELIZMENTE VOCÊ NÃO TEM <br />  UMA AVALIAÇÃO ATUALIZADO, <br /> PARA REALIZAR UM AGENDAMENTO <br /> É NECESSÁRIO TER UMA AVALIAÇÃO <br />CADASTRADA</p>;
+    const noAssessmentText =
+        <MissContent>
+            <p className='side-text'>INFELIZMENTE VOCÊ NÃO TEM <br />
+                UMA AVALIAÇÃO ATUALIZADO, <br /> PARA REALIZAR UM AGENDAMENTO <br />
+                É NECESSÁRIO TER UMA AVALIAÇÃO <br />
+                CADASTRADA</p>
+            <Link to='/assessment'>Cique aqui para cadastrar sua avaliação</Link>
+
+        </MissContent>;
 
     return (
         <>
@@ -59,7 +72,7 @@ export default function Booking() {
                 {sideView ?
                     sideView === 'calendly' ? calendly :
                         sideView === 'noHistoric' ? noHistoricText :
-                            defaultMessage
+                            sideView === 'noAssessmentText' ? noAssessmentText : defaultMessage
                     :
                     defaultMessage
 
