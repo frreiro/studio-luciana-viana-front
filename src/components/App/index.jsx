@@ -8,6 +8,7 @@ import Signup from '../Singup/index.jsx';
 import { TokenProvider } from '../../context/tokenContext.jsx';
 import Historic from '../Historic/index.jsx';
 import { UserProvider } from '../../context/userContext.jsx';
+import Assessment from '../Assessment/index.jsx';
 
 export default function App() {
     return (
@@ -21,6 +22,7 @@ export default function App() {
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/booking" element={<Booking />} />
                         <Route path="/historic" element={<Historic />} />
+                        <Route path="/assessment" element={<Assessment />} />
 
                         {/* <Route path="/about" element={<BrowserRouter />} /> */}
                         {/* <Route path="/" /> */}

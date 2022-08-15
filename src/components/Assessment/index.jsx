@@ -1,43 +1,46 @@
 
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../Header/index.jsx';
-import HistoricForm from './form.jsx';
-import HistoricUser from './historicUser.jsx';
-import { Button } from '../utils/formUtils.js';
 import { TokenContext } from '../../context/tokenContext.jsx';
-import { getHistoric } from '../../services/historic.js';
 import { UserContext } from '../../context/userContext.jsx';
+import { getAssesment } from '../../services/assessment.js';
+import { Button } from '../utils/formUtils.js';
+import AssessmentForm from './form.jsx';
+import AssessmentUser from './assessmentUser.jsx';
 
 
-export default function Historic() {
+export default function Assessment() {
 
-    const [historic, setHistoric] = useState({});
+    const [assessment, setAssessment] = useState({});
     const [enableForm, setEnableForm] = useState(false);
 
     const { token } = useContext(TokenContext);
     const { user } = useContext(UserContext);
 
-    useEffect(async () => {
-        const userHistoric = await getHistoric(token);
-        if (userHistoric) return setHistoric(userHistoric);
 
+    useEffect(() => {
+        (async () => {
+            const userAssessment = await getAssesment(token);
+            if (userAssessment) return setAssessment(userAssessment);
+            console.log(userAssessment);
+
+        })();
     }, [enableForm]);
-
 
 
     return (
         <>
             <Header />
             <MainTag>
-                <Banner>
+                <AssessmentBanner>
                     <BannerTitle>
-                        <h1>HISTÓRICO</h1>
+                        <h1>AVALIAÇÃO</h1>
                         <hr />
                     </BannerTitle>
-                    {!enableForm && Object.keys(historic).length > 1
-                        ? <HistoricUser historic={historic} enableForm={setEnableForm} />
-                        : enableForm ? <HistoricForm enableForm={setEnableForm} historic={historic} />
+                    {!enableForm && Object.keys(assessment).length > 1
+                        ? <AssessmentUser assessment={assessment} enableForm={setEnableForm} Button={Button} />
+                        : enableForm ? <AssessmentForm enableForm={setEnableForm} assessment={assessment} Button={Button} />
                             : <NotFound>
                                 <p className='not-found'>
                                     Nenhum histórico cadastrado
@@ -45,7 +48,7 @@ export default function Historic() {
                                 <Button onClick={() => setEnableForm(!enableForm)}>CADASTRAR</Button>
                             </NotFound>
                     }
-                </Banner>
+                </AssessmentBanner>
                 <MissContent>
                     <p className='side-text'>
                         OLÁ, {user?.name.split(' ')[0].toUpperCase()}<br />
@@ -70,12 +73,15 @@ export default function Historic() {
         </>
     );
 }
+
+
 const MainTag = styled.div`
     justify-content: space-evenly;
     display: flex;
     align-items: center;
     padding: 108px 47px 0 47px;
     position: relative;
+    
 
 
     p{
@@ -94,7 +100,7 @@ const MainTag = styled.div`
     `;
 
 
-const Banner = styled.article`
+const AssessmentBanner = styled.article`
     width: 500px;
     height: 710px;
     background-color: var(--second-color);

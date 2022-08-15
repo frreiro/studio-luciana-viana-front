@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Button } from '../utils/formUtils.js';
 
 export default function HistoricUser({ historic, enableForm }) {
 
@@ -29,29 +30,14 @@ export default function HistoricUser({ historic, enableForm }) {
                         </InputGroup>
                     </div>
                 </div>
-                <button onClick={() => enableForm(true)}>EDITAR</button>
+                <Button onClick={() => enableForm(true)}>EDITAR</Button>
             </UserHistoric>
         </>
     );
 }
-
 const UserHistoric = styled.div`
 display: flex;
 flex-direction: column;
-align-items: center;
-
-button{
-    width:302px;
-    height:51px;
-    font-family: var(--body-font);
-    font-weight: lighter;
-    font-size: 25px;
-    color: white;
-    background-color: var(--button-color);
-    border-radius: 5px;
-    margin-top: 45px;
-}
-
 `;
 
 const RadioBox = styled.label`
