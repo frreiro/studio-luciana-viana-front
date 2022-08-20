@@ -9,6 +9,7 @@ const globalStyle = createGlobalStyle`
         --second-color: #FFF2F2;
         --third-color: #946A56;
         --button-color: #C1896D;
+        --image-mobile-height: 110px;
     }
     body *{
         box-sizing: border-box;
