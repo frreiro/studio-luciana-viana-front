@@ -10,8 +10,8 @@ export default function Signup() {
         <>
             <Container>
                 <Banner>
-                    <LogoWithBackground />
-                    <Title>
+                    <LogoWithBackground inBanner={true} />
+                    <Title marginTop={80}>
                         <h1 className='title'>CADASTRO</h1>
                         <hr />
                     </Title>

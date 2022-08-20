@@ -9,8 +9,8 @@ export default function Login() {
         <>
             <Container>
                 <Banner>
-                    <LogoWithBackground />
-                    <Title>
+                    <LogoWithBackground inBanner={true} />
+                    <Title marginTop={80}>
                         <h1 >LOGIN</h1>
                         <hr />
                     </Title>
@@ -29,13 +29,20 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: ${props => props.backgroundColor ? props.backgroundColor : 'var(--main-color)'};
+    
+    p, a{
+       font-family: var(--body-font);
+        color: var(--third-color);
+         font-weight: 300;
+    }
     
     `;
 
 
 export const Banner = styled.article`
     height: 409px;
-    background-color: var(--second-color);
+    background-color: ${props => props.backgroundColor ? props.backgroundColor : 'var(--second-color)'};
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -57,7 +64,7 @@ export const Banner = styled.article`
 `;
 
 export const Title = styled.div`
-    margin-top: 80px;
+    margin-top: ${(props) => props.marginTop ? props.marginTop : 38}px;
     font-family: var(--title-font);
     color: var(--third-color);
     font-size: 16px;

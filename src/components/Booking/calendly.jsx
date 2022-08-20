@@ -1,8 +1,8 @@
 import React from 'react';
-import { InlineWidget } from 'react-calendly';
+import { PopupModal } from 'react-calendly';
 import createText from '../utils/createText.js';
 
-export default function Calendly({ user, spots }) {
+export default function Calendly({ user, spots, setOpen, openCalendly }) {
     console.log(spots);
     const prefill = {
         name: user.name,
@@ -15,21 +15,23 @@ export default function Calendly({ user, spots }) {
 
     return (
         <>
-            <InlineWidget
+            <PopupModal
                 iframeTitle="Calendly Schedule"
                 url="https://calendly.com/lucasvfv/epilacao"
-                styles={StyleSheet}
+                rootElement={document.querySelector('.root')}
+                onModalClose={setOpen}
+                open={openCalendly}
                 prefill={prefill} />
         </>
     );
 }
 
 
-const StyleSheet = {
-    'width': 'calc(100vw - 900px)',
-    'height': '710px',
-    'marginLeft': '50px',
-    'borderRadius': '10px',
-};
+// const StyleSheet = {
+//     'width': 'calc(100vw - 300px)',
+//     'height': '710px',
+//     'marginLeft': '50px',
+//     'borderRadius': '10px',
+// };
 
 
