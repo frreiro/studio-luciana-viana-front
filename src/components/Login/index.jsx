@@ -22,6 +22,8 @@ export default function Login() {
     );
 }
 
+
+
 export const Container = styled.div`
     width: 100vw;
     height: 100vh;
@@ -29,12 +31,21 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: ${props => props.backgroundColor ? props.backgroundColor : 'var(--main-color)'};
+    background-color: ${props => props.colorInverted ? 'var(--second-color)' : 'var(--main-color)'};
+    ${props => props.customStyle}
     
     p, a{
        font-family: var(--body-font);
         color: var(--third-color);
-         font-weight: 300;
+         /* font-weight: 300; */
+    }
+
+    article {
+       background-color: ${props => props.colorInverted ? 'var(--main-color)' : 'var(--second-color)'};
+    }
+
+    footer {
+       background-color: ${props => props.colorInverted ? 'var(--main-color)' : 'var(--second-color)'};
     }
     
     `;
@@ -42,7 +53,7 @@ export const Container = styled.div`
 
 export const Banner = styled.article`
     height: 409px;
-    background-color: ${props => props.backgroundColor ? props.backgroundColor : 'var(--second-color)'};
+    width: 243px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

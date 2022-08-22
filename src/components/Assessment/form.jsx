@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { TokenContext } from '../../context/tokenContext.jsx';
-import { RadioCouple, RadioGroupInput, RadioQuadriple, RadioTriple, Form, Button } from '../utils/formUtils.js';
+import { RadioCouple, RadioGroupInput, RadioQuadriple, RadioTriple, Form } from '../utils/formUtils.js';
 import { createAssessment, updateAssessment } from '../../services/assessment.js';
 
 
@@ -135,7 +135,7 @@ export default function AssessmentForm({ assessment, enableForm }) {
                         </>
                     )
                 }
-                <Button type='submit'>{page === 1 ? 'PRÓXIMO' : 'SALVAR'}</Button>
+                <button type='submit'>{page === 1 ? 'PRÓXIMO' : 'SALVAR'}</button>
             </Form>
         </>
     );

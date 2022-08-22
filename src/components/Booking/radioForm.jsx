@@ -93,7 +93,7 @@ const Form = styled.form`
 
 `;
 
-const Checkbox = styled.label`
+export const Checkbox = styled.label`
     position: relative;
     display: flex;
     justify-content: center;
@@ -126,5 +126,7 @@ const Checkbox = styled.label`
             border-radius: 30px;
             border: solid 2px #FFFF;
         }
+
+        ${props => props.customStyle}
 
 `;
