@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
 
 
-export default function Footer({ onClick }) {
+export default function Footer() {
     const navigate = useNavigate();
+    const [footerUp, setFooterUp] = useState(false);
+
+    function clickFooter() {
+        setFooterUp(true);
+        setTimeout(() => navigate('/menu'), 1000);
+    }
+
     return (
-        <FootContainer onClick={onClick ? onClick : () => navigate('/menu')}>
+        <FootContainer className={footerUp ? 'footer-up' : ''} onClick={clickFooter}>
             <h1>MENU</h1>
 
         </FootContainer>
@@ -23,8 +30,16 @@ const FootContainer = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-radius: 10px 10px 0 0;
+
+
+    &.footer-up{
+        -webkit-animation-name: animate;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-fill-mode: forwards;
+    }
+
+ 
 
     h1{
         font-family: var(--title-font);

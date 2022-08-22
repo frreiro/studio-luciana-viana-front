@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import RadioForm from './radioForm.jsx';
-import { useNavigate } from 'react-router';
-// import { Link } from 'react-router-dom';
 import { getHistoric } from '../../services/historic.js';
 import { useContext, useState } from 'react';
 import { TokenContext } from '../../context/tokenContext.jsx';
@@ -21,16 +19,20 @@ export default function Booking() {
     const [spots, setSpots] = useState({});
     const [openCalendly, setOpenCalendly] = useState(false);
 
-    const navigate = useNavigate();
     const { user } = useContext(UserContext);
     const { token } = useContext(TokenContext);
 
 
     async function onSubmit(spotsChooses) {
+
         setSpots(spotsChooses);
+        const userHasChoosen = checkIfUserHasChosen(spotsChooses);
         const historic = await getHistoric(token);
         const assessment = await getAssesment(token);
-        if (!historic) {
+        if (!userHasChoosen) {
+            setSideView('noChoices');
+        }
+        else if (!historic) {
             setSideView('noHistoric');
         }
         else if (!assessment) {
@@ -42,19 +44,23 @@ export default function Booking() {
         }
     }
 
+    function checkIfUserHasChosen(spotsChooses) {
+        return Object.keys(spotsChooses).some((spots) => spotsChooses[spots] === true);
+    }
+
     function closeCalendly() {
         setOpenCalendly(false);
         setSideView(null);
     }
 
-    function notFoundFunction(type) {
+    function notFoundFunction(message) {
         setTimeout(() => {
             setSideView(null);
-        }, 1000);
+        }, 3000);
         return (
             <NotFound>
                 <p>
-                    Nenhum {type} cadastrado
+                    {message}
                 </p>
             </NotFound>
         );
@@ -71,17 +77,18 @@ export default function Booking() {
                             <h1 className='title'>AGENDAMENTO</h1>
                             <hr />
                         </Title>
-                        {sideView === 'noHistoric' ? notFoundFunction('histórico')
-                            : sideView === 'noAssessmentText' ? notFoundFunction('avaliação')
-                                : <>
-                                    <Subtitle>
-                                        <p className='subtitle'>Escolha o procedimento:</p>
-                                    </Subtitle>
-                                    <RadioForm onSubmit={onSubmit} />
-                                </>
+                        {sideView === 'noHistoric' ? notFoundFunction('Nenhum histórico cadastrado')
+                            : sideView === 'noAssessmentText' ? notFoundFunction('Nenhuma avaliação cadastrada')
+                                : sideView === 'noChoices' ? notFoundFunction('Nenhum procedimento escolhido')
+                                    : <>
+                                        <Subtitle>
+                                            <p className='subtitle'>Escolha o procedimento:</p>
+                                        </Subtitle>
+                                        <RadioForm onSubmit={onSubmit} />
+                                    </>
                         }
                     </Banner>
-                    <Footer onClick={() => navigate('/menu')} />
+                    <Footer />
                 </>
             }
         </Container>

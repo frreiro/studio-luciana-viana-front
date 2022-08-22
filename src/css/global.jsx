@@ -20,6 +20,14 @@ const globalStyle = createGlobalStyle`
         font-family: var(--body-font);
     }
 
+    @-webkit-keyframes animate {
+        0% {
+        }
+        100% {
+            height: 100vh;
+        }
+    }
+
 `;
 
 export default globalStyle;
