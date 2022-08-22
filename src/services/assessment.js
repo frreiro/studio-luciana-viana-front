@@ -9,7 +9,6 @@ const config = (token) => {
 };
 
 export async function createAssessment(data, token) {
-    console.log(data);
     const response = await api.post('/assessment', data, config(token));
     return response.data;
 }

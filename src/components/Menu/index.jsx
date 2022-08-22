@@ -1,7 +1,7 @@
 import React from 'react';
 // import styled from 'styled-components';
 import { useNavigate } from 'react-router';
-import { Container, Title } from '../Login/index.jsx';
+import { Container, Title } from '../../css/general.jsx';
 import LogoWithBackground from '../Logo/index.jsx';
 
 

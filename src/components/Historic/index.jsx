@@ -3,7 +3,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import HistoricForm from './form.jsx';
 import HistoricUser from './historicUser.jsx';
-import { Container, Title, Banner, CardInner, FlipCard } from '../Login/index.jsx';
+import { Container, Title, Banner, CardInner, FlipCard } from '../../css/general.jsx';
 import { TokenContext } from '../../context/tokenContext.jsx';
 import { getHistoric } from '../../services/historic.js';
 import LogoWithBackground from '../Logo/index.jsx';

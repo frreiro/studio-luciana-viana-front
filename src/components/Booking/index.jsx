@@ -7,7 +7,7 @@ import { TokenContext } from '../../context/tokenContext.jsx';
 import { UserContext } from '../../context/userContext.jsx';
 import Calendly from './calendly.jsx';
 import { getAssesment } from '../../services/assessment.js';
-import { Banner, Container, Title } from '../Login/index.jsx';
+import { Banner, Container, Title } from '../../css/general.jsx';
 import LogoWithBackground from '../Logo/index.jsx';
 import Footer from '../Footer/index.jsx';
 import { NotFound } from '../Historic/index.jsx';

@@ -24,7 +24,6 @@ export default function SignupForm() {
         signUpInfo.current = { ...signUpInfo.current, ...data };
 
         if (page !== 1) {
-            console.log(signUpInfo.current);
             const res = await createUser(signUpInfo.current);
             if (res === 'Created') navigate('/');
         }

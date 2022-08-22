@@ -41,7 +41,6 @@ export default function AssessmentForm({ assessment, enableForm, setIsFlipped, i
 
     const { token } = useContext(TokenContext);
     async function onSubmit(data) {
-        console.log(data);
         if (page === 1) {
             setIsFlipped(!isFlipped);
             return setTimeout(() => setPage(page + 1), 100);

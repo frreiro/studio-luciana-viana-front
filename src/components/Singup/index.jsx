@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SignupForm from './form.jsx';
-import { Container, Banner, Title } from '../Login/index.jsx';
+import { Container, Banner, Title } from '../../css/general.jsx';
 import LogoWithBackground from '../Logo/index.jsx';
 
 export default function Signup() {

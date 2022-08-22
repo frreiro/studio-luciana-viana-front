@@ -4,7 +4,7 @@ import { TokenContext } from '../../context/tokenContext.jsx';
 import { getAssesment } from '../../services/assessment.js';
 import AssessmentForm from './form.jsx';
 import AssessmentUser from './assessmentUser.jsx';
-import { Container, Title, Banner, CardInner, FlipCard } from '../Login/index.jsx';
+import { Container, Title, Banner, CardInner, FlipCard } from '../../css/general.jsx';
 import { NotFound } from '../Historic/index.jsx';
 import LogoWithBackground from '../Logo/index.jsx';
 import Footer from '../Footer/index.jsx';
