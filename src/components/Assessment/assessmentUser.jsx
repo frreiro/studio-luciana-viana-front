@@ -9,7 +9,7 @@ import { HiddenDiv } from '../utils/radioCouple.jsx';
 
 export default function AssessmentUser({ assessment, enableForm, setIsFlipped, isFlipped }) {
     const [page, setPage] = useState(1);
-    console.log(page);
+
     function changePage() {
         if (page === 1) {
             setTimeout(() => setPage(page + 1), 100);

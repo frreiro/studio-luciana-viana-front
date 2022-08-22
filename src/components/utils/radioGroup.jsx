@@ -5,7 +5,6 @@ import { Checkbox } from '../Booking/radioForm.jsx';
 export default function RadioGroupInput({ watch, setValue, register, name, placeholder, title }) {
 
     function parseInputValue(booleanInputName, inputName) {
-        console.log(watch(booleanInputName, false));
         const watchInput = JSON.parse(watch(booleanInputName, false));
         if (!watchInput) setValue(inputName, null);
         return watchInput;

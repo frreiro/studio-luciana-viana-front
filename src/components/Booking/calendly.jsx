@@ -3,7 +3,7 @@ import { PopupModal } from 'react-calendly';
 import createText from '../utils/createText.js';
 
 export default function Calendly({ user, spots, setOpen, openCalendly }) {
-    console.log(spots);
+
     const prefill = {
         name: user.name,
         email: user.email,

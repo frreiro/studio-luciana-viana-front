@@ -18,14 +18,12 @@ export default function Assessment() {
     const [isFlipped, setIsFlipped] = useState(false);
 
     const { token } = useContext(TokenContext);
-    // const { user } = useContext(UserContext);
 
 
     useEffect(() => {
         (async () => {
             const userAssessment = await getAssesment(token);
             if (userAssessment) return setAssessment(userAssessment);
-            console.log(userAssessment);
 
         })();
     }, [enableForm]);
