@@ -5,7 +5,7 @@ import { RadioCouple, RadioGroupInput, RadioQuadriple, RadioTriple, Form } from 
 import { createAssessment, updateAssessment } from '../../services/assessment.js';
 
 
-export default function AssessmentForm({ assessment, enableForm }) {
+export default function AssessmentForm({ assessment, enableForm, setIsFlipped, isFlipped }) {
     const { register, handleSubmit, watch, setValue } = useForm({
     });
 
@@ -42,7 +42,11 @@ export default function AssessmentForm({ assessment, enableForm }) {
     const { token } = useContext(TokenContext);
     async function onSubmit(data) {
         console.log(data);
-        if (page === 1) return setPage(page + 1);
+        if (page === 1) {
+            setIsFlipped(!isFlipped);
+            return setTimeout(() => setPage(page + 1), 100);
+        }
+
         const formData = transformFormData(data);
 
         if (isEdditing) {

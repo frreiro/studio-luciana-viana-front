@@ -50,6 +50,23 @@ export const Container = styled.div`
     
     `;
 
+export const CardInner = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+
+`;
+
+export const FlipCard = styled.div`
+  background-color: transparent;
+
+    &.show-back ${CardInner}{
+        transform: rotateY(180deg);
+    }
+
+`;
 
 export const Banner = styled.article`
     height: 409px;
@@ -61,6 +78,10 @@ export const Banner = styled.article`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     position: relative;
+
+    &.show-back{
+        transform: rotateY(180deg);
+    }
   
     a{
         font-family: var(--body-font);
@@ -69,8 +90,6 @@ export const Banner = styled.article`
         color: var(--button-color);
         margin-bottom: 40px;
         opacity: 0.7;
-
-        
     }
 `;
 

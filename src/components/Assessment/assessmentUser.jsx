@@ -7,8 +7,19 @@ import { HiddenDiv } from '../utils/radioCouple.jsx';
 
 
 
-export default function AssessmentUser({ assessment, enableForm }) {
+export default function AssessmentUser({ assessment, enableForm, setIsFlipped, isFlipped }) {
     const [page, setPage] = useState(1);
+    console.log(page);
+    function changePage() {
+        if (page === 1) {
+            setTimeout(() => setPage(page + 1), 100);
+            setIsFlipped(!isFlipped);
+        } else {
+            setTimeout(() => enableForm(true), 100);
+            setIsFlipped(!isFlipped);
+        }
+    }
+
     return (
         <>
             <UserAssessment >
@@ -104,7 +115,7 @@ export default function AssessmentUser({ assessment, enableForm }) {
 
                 }
 
-                <button onClick={() => page === 1 ? setPage(2) : enableForm(true)}>{page === 1 ? 'PRÓXIMO' : 'EDITAR'}</button>
+                <button onClick={changePage}>{page === 1 ? 'PRÓXIMO' : 'EDITAR'}</button>
             </UserAssessment>
         </>
     );

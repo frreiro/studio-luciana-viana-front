@@ -6,7 +6,12 @@ import { Checkbox } from '../Booking/radioForm.jsx';
 import { HiddenDiv } from '../utils/radioCouple.jsx';
 
 
-export default function HistoricUser({ historic, enableForm }) {
+export default function HistoricUser({ historic, enableForm, setIsFlipped, isFlipped }) {
+
+    function edit() {
+        setIsFlipped(!isFlipped);
+        setTimeout(() => enableForm(true), 100);
+    }
 
     return (
         <>
@@ -41,7 +46,7 @@ export default function HistoricUser({ historic, enableForm }) {
                         <HiddenDiv />
                     </InputGroup>
                 </RadioGroup>
-                <button onClick={() => enableForm(true)}>EDITAR</button>
+                <button onClick={edit}>EDITAR</button>
             </UserHistoric>
         </>
     );
