@@ -7,6 +7,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+padding-bottom: 60px;
 
 background-color: ${props => props.colorInverted ? 'var(--second-color)' : 'var(--main-color)'};
 ${props => props.customStyle}
