@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 width: 100vw;
-height: 100vh;
+height: 100vh ;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+
 background-color: ${props => props.colorInverted ? 'var(--second-color)' : 'var(--main-color)'};
 ${props => props.customStyle}
 
@@ -23,6 +24,11 @@ footer {
    background-color: ${props => props.colorInverted ? 'var(--main-color)' : 'var(--second-color)'};
 }
 
+@media(min-width: 600px) {
+    height: calc(100vh + 150px);
+        
+    }
+
 `;
 
 export const CardInner = styled.div`
@@ -31,6 +37,8 @@ width: 100%;
 height: 100%;
 transition: transform 0.8s;
 transform-style: preserve-3d;
+
+
 
 `;
 
@@ -66,6 +74,8 @@ a{
     margin-bottom: 40px;
     opacity: 0.7;
 }
+
+
 `;
 
 export const Title = styled.div`

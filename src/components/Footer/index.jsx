@@ -23,8 +23,9 @@ export default function Footer() {
 const FootContainer = styled.footer`
     width: 100vw;
     height: 60px;
+    
     background-color:  ${props => props.backgroundColor ? props.backgroundColor : 'var(--second-color)'};
-    position: absolute;
+    position: fixed;
     bottom: 0;
 
     display: flex;
