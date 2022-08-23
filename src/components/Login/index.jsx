@@ -7,19 +7,17 @@ import { Container, Banner, Title } from '../../css/general.jsx';
 
 export default function Login() {
     return (
-        <>
-            <Container>
-                <Banner>
-                    <LogoWithBackground inBanner={true} />
-                    <Title marginTop={80}>
-                        <h1 >LOGIN</h1>
-                        <hr />
-                    </Title>
-                    <LoginForm />
-                    <Link to={'/signup'}>Não tem conta? Que tal criar uma?</Link>
-                </Banner>
-            </Container>
-        </>
+        <Container>
+            <Banner>
+                <LogoWithBackground inBanner={true} />
+                <Title marginTop={80}>
+                    <h1 >LOGIN</h1>
+                    <hr />
+                </Title>
+                <LoginForm />
+                <Link to={'/signup'}>Não tem conta? Que tal criar uma?</Link>
+            </Banner>
+        </Container>
     );
 }
 

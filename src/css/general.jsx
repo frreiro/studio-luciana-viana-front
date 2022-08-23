@@ -7,7 +7,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-padding-bottom: 60px;
+
 
 background-color: ${props => props.colorInverted ? 'var(--second-color)' : 'var(--main-color)'};
 ${props => props.customStyle}
@@ -25,11 +25,14 @@ footer {
    background-color: ${props => props.colorInverted ? 'var(--main-color)' : 'var(--second-color)'};
 }
 
-@media(min-width: 600px) {
-    height: calc(100vh + 150px);
-        
+@media(max-width: 620px) {
+    margin-bottom: 60px
     }
 
+/* @media(min-width: 620px) {
+    height: calc(100vh + 100px);
+        
+    } */
 `;
 
 export const CardInner = styled.div`
