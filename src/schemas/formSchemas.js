@@ -19,7 +19,8 @@ export const signupFirstSchema = joi.object({
 
 export const signupSecondSchema = joi.object({
     birthday: joi.string().pattern(/^([0-2][0-9]|(3)[0-1])(((0)[0-9])|((1)[0-2]))\d{4}$/).required().messages({
-        'string.empty': 'Data de nascimento é obrigatório'
+        'string.empty': 'Data de nascimento é obrigatório',
+        'string.pattern.base': 'Data de nascimento precisa serguir o padrão DD/MM/AAAAA'
     }),
     address: joi.string().required().messages({
         'string.empty': 'Endereço é obrigatório',

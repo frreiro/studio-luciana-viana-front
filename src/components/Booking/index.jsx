@@ -30,7 +30,6 @@ export default function Booking() {
 
 
     async function onSubmit(spotsChooses) {
-
         setSpots(spotsChooses);
         const userHasChoosen = checkIfUserHasChosen(spotsChooses);
         const historic = await getHistoric(token);
