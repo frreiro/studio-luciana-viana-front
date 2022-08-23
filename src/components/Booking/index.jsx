@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import RadioForm from './radioForm.jsx';
 import { getHistoric } from '../../services/historic.js';
@@ -11,6 +11,7 @@ import { Banner, Container, Title } from '../../css/general.jsx';
 import LogoWithBackground from '../Logo/index.jsx';
 import Footer from '../Footer/index.jsx';
 import { NotFound } from '../Historic/index.jsx';
+import { useNavigate } from 'react-router';
 
 
 export default function Booking() {
@@ -21,6 +22,11 @@ export default function Booking() {
 
     const { user } = useContext(UserContext);
     const { token } = useContext(TokenContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!token) navigate('/');
+    }, []);
 
 
     async function onSubmit(spotsChooses) {

@@ -3,6 +3,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import HistoricForm from './form.jsx';
 import HistoricUser from './historicUser.jsx';
+import { useNavigate } from 'react-router';
 import { Container, Title, Banner, CardInner, FlipCard } from '../../css/general.jsx';
 import { TokenContext } from '../../context/tokenContext.jsx';
 import { getHistoric } from '../../services/historic.js';
@@ -17,8 +18,11 @@ export default function Historic() {
     const [isFlipped, setIsFlipped] = useState(false);
 
     const { token } = useContext(TokenContext);
+    const navigate = useNavigate();
 
     useEffect(async () => {
+        if (!token) navigate('/');
+
         const userHistoric = await getHistoric(token);
         if (userHistoric) return setHistoric(userHistoric);
 

@@ -1,5 +1,6 @@
 
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { TokenContext } from '../../context/tokenContext.jsx';
 import { getAssesment } from '../../services/assessment.js';
 import AssessmentForm from './form.jsx';
@@ -18,9 +19,10 @@ export default function Assessment() {
     const [isFlipped, setIsFlipped] = useState(false);
 
     const { token } = useContext(TokenContext);
-
+    const navigate = useNavigate();
 
     useEffect(() => {
+        if (!token) navigate('/');
         (async () => {
             const userAssessment = await getAssesment(token);
             if (userAssessment) return setAssessment(userAssessment);
