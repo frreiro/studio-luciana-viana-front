@@ -41,25 +41,27 @@ export default function LoginForm() {
     );
 }
 
-const Form = styled.form`
+export const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 22px 0 22px;
+    
     input{
-        width: 379px;
-        height: 56px;
-        border-radius:10px;
+        width: 200px;
+        height: 30px;
+        border-radius:5px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 44px;
         font-family: var(--body-font);
         color: var(--third-color);
-        font-size: 30px;
+        font-size: 16px;
         font-weight: lighter;
-        padding: 0 0 0 13px;
-
+        padding: 0 0 0 7px;
+        margin-top: 10px;
+        
         ::placeholder{
             color: var(--third-color);
             opacity: 0.7;
@@ -67,23 +69,24 @@ const Form = styled.form`
         }
     }
 
+    input:first-of-type{
+        margin-top: 0px;
+    }
+    
+    input:last-of-type{
+        margin-bottom: 80px;
+    }
+    
     button{
-        width:302px;
-        height:51px;
+        width:145px;
+        height:30px;
         font-family: var(--body-font);
         font-weight: lighter;
-        font-size: 25px;
+        font-size: 16px;
         color: white;
         background-color: var(--button-color);
         border-radius: 5px;
-        margin-top: 78px;
-    }
-    
-    a{
-        margin-top:96px;
-        font-family: var(--body-font);
-        font-weight: lighter;
-        font-size: 20px;
-        color: var(--button-color);
+        position: absolute;
+        bottom: 65px;
     }
 `;

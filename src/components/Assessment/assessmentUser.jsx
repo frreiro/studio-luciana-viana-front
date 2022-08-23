@@ -1,169 +1,152 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { InputGroup, RadioGroup, Title } from '../utils/radioGroup.jsx';
+import { Checkbox } from '../Booking/radioForm.jsx';
+import { Text } from '../Historic/historicUser.jsx';
+import { HiddenDiv } from '../utils/radioCouple.jsx';
 
-export default function AssessmentUser({ assessment, enableForm, Button }) {
+
+
+export default function AssessmentUser({ assessment, enableForm, setIsFlipped, isFlipped }) {
     const [page, setPage] = useState(1);
+
+    function changePage() {
+        if (page === 1) {
+            setTimeout(() => setPage(page + 1), 100);
+            setIsFlipped(!isFlipped);
+        } else {
+            setTimeout(() => enableForm(true), 100);
+            setIsFlipped(!isFlipped);
+        }
+    }
+
     return (
         <>
             <UserAssessment >
-                <div>
-                    {page === 1 ?
-                        <>
-                            <div>
-                                <Title>Tipo de pele :</Title>
-                                <InputGroup>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.skinType === 'Oleosa' ? 'checked' : ''}`}></span>
-                                        <p>OLEOSA</p>
-                                    </RadioBox>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.skinType === 'Seca' ? 'checked' : ''}`}></span>
-                                        <p>SECA</p>
-                                    </RadioBox>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.skinType === 'Normal' ? 'checked' : ''}`}></span>
-                                        <p>NORMAL</p>
-                                    </RadioBox>
-                                </InputGroup>
-                            </div>
-                            <Title>Manchas:</Title>
-                            <Text >{assessment.spots ? assessment.spots : 'Nenhuma'}</Text>
+                {page === 1 ?
+                    <>
+                        <RadioGroup>
+                            <Title>Tipo de pele :</Title>
+                            <InputGroup>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.skinType === 'Oleosa' ? 'checked' : ''}`}></span>
+                                    <p>OLEOSA</p>
+                                </Checkbox>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.skinType === 'Seca' ? 'checked' : ''}`}></span>
+                                    <p>SECA</p>
+                                </Checkbox>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.skinType === 'Normal' ? 'checked' : ''}`}></span>
+                                    <p>NORMAL</p>
+                                </Checkbox>
+                            </InputGroup>
+                        </RadioGroup>
+                        <div>
                             <Title>Alteração na pele:</Title>
+                            <Text >{assessment.spots ? assessment.spots : 'Nenhuma'}</Text>
+                        </div>
+                        <div>
+                            <Title>Manchas:</Title>
                             <Text>{assessment.skinChanges ? assessment.skinChanges : 'Nenhuma'}</Text>
+                        </div>
+                        <div>
                             <Title>Tratamento com ácido:</Title>
                             <Text>{assessment.acidTreatment ? assessment.acidTreatment : 'Nenhuma'}</Text>
+                        </div>
+                        <div>
                             <Title>Hidratação na pele: </Title>
                             <Text>{assessment.skinHidratation ? assessment.skinHidratation : 'Nenhum'}</Text>
-                        </>
-                        :
-                        <>
-                            <div>
-                                <Title>É diabético:</Title>
-                                <InputGroup>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.hasDiabetes ? '' : 'checked'}`}></span>
-                                        <p>NÃO</p>
-                                    </RadioBox>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.hasDiabetes ? 'checked' : ''}`}></span>
-                                        <p>SIM</p>
-                                    </RadioBox>
-                                </InputGroup>
-                            </div>
-                            <div>
-                                <Title>Já realizou algum tipo de depilação com cera: </Title>
-                                <InputGroup>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.alreadyWax ? '' : 'checked'}`}></span>
-                                        <p>NÃO</p>
-                                    </RadioBox>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.alreadyWax ? 'checked' : ''}`}></span>
-                                        <p>SIM</p>
-                                    </RadioBox>
-                                </InputGroup>
-                            </div>
+                        </div>
+                    </>
+                    :
+                    <>
+                        <RadioGroup>
+                            <Title>É diabético:</Title>
+                            <InputGroup>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.hasDiabetes ? '' : 'checked'}`}></span>
+                                    <p>NÃO</p>
+                                </Checkbox>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.hasDiabetes ? 'checked' : ''}`}></span>
+                                    <p>SIM</p>
+                                </Checkbox>
+                                <HiddenDiv />
+                            </InputGroup>
+                        </RadioGroup>
+                        <RadioGroup>
+                            <Title>Já realizou algum tipo de depilação com cera: </Title>
+                            <InputGroup>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.alreadyWax ? '' : 'checked'}`}></span>
+                                    <p>NÃO</p>
+                                </Checkbox>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.alreadyWax ? 'checked' : ''}`}></span>
+                                    <p>SIM</p>
+                                </Checkbox>
+                                <HiddenDiv />
+                            </InputGroup>
+                        </RadioGroup>
 
-                            <div>
-                                <Title>Método de epilação anterior:</Title>
-                                <InputGroup>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.lastStyle === 'CERA_QUENTE' ? 'checked' : ''}`}></span>
-                                        <p>CERTA QUENTE</p>
-                                    </RadioBox>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.lastStyle === 'CERA_FRIA' ? 'checked' : ''}`}></span>
-                                        <p>CERA FRIA</p>
-                                    </RadioBox>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.lastStyle === 'LAMINA' ? 'checked' : ''}`}></span>
-                                        <p>LÂMINA</p>
-                                    </RadioBox>
-                                    <RadioBox>
-                                        <span className={`radio-custom ${assessment.lastStyle === 'LASER' ? 'checked' : ''}`}></span>
-                                        <p>LASER</p>
-                                    </RadioBox>
-                                </InputGroup>
-                            </div>
-                        </>
+                        <RadioGroup>
+                            <Title>Método de epilação anterior:</Title>
+                            <InputGroup>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.lastStyle === 'CERA_QUENTE' ? 'checked' : ''}`}></span>
+                                    <p>CERTA QUENTE</p>
+                                </Checkbox>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.lastStyle === 'CERA_FRIA' ? 'checked' : ''}`}></span>
+                                    <p>CERA FRIA</p>
+                                </Checkbox>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.lastStyle === 'LAMINA' ? 'checked' : ''}`}></span>
+                                    <p>LÂMINA</p>
+                                </Checkbox>
+                                <Checkbox>
+                                    <span className={`checkbox-custom ${assessment.lastStyle === 'LASER' ? 'checked' : ''}`}></span>
+                                    <p>LASER</p>
+                                </Checkbox>
+                            </InputGroup>
+                        </RadioGroup>
+                    </>
 
-                    }
+                }
 
-                </div>
-                <Button onClick={() => page === 1 ? setPage(2) : enableForm(true)}>{page === 1 ? 'PRÓXIMO' : 'EDITAR'}</Button>
+                <button onClick={changePage}>{page === 1 ? 'PRÓXIMO' : 'EDITAR'}</button>
             </UserAssessment>
         </>
     );
 }
 
 const UserAssessment = styled.div`
+height: 100%;
 display: flex;
 flex-direction: column;
-`;
-
-const RadioBox = styled.label`
-position: relative;
-display: flex;
+align-items: center;
 justify-content: center;
-padding-right: 48px;
 
-    p{  
-        margin-top:30px;
-        font-size: 11px;
-        text-align: center;
+
+button{
+        width:145px;
+        height:30px;
+        font-family: var(--body-font);
+        font-weight: lighter;
+        font-size: 16px;
+        color: white;
+        background-color: var(--button-color);
+        margin-top: 40px;
+        border-radius: 5px;
     }
 
-    input{
-        width: 22px;
-        height: 23px;
-        opacity: 0;
-        cursor: pointer;
-        position:absolute;
-    }
-     .radio-custom{
-        width: 22px;
-        height: 23px;
-        background-color: #FFFF;
-        border-radius: 30px;
-        border: solid 2px #FFFF;
-        position: absolute;
-        top: 0;
-    }
 
+    ${Checkbox}{
         .checked{
-        background-color: var(--third-color);
-        border-radius: 30px;
-        border: solid 4px #FFFF;
+            background-color: var(--third-color);
+            border-radius: 30px;
+            border: solid 2px #FFFF;
+     }
     }
 `;
-
-const Text = styled.div`
-    height: 41px;
-    border-radius:10px;
-    background-color: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: var(--body-font);
-    font-weight: lighter;
-    color: var(--third-color);
-    font-size: 20px;
-    padding: 0px 0 0 13px;
-    margin-bottom: 22px;
-    display: flex;
-    align-items: center;
-
-
-`;
-
-const InputGroup = styled.div`
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    
-`;
-
-const Title = styled.p`
-font-size: 20px;
-font-weight: 700;
-margin-bottom: 12px;
-`;
-

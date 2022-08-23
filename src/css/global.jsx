@@ -5,10 +5,12 @@ const globalStyle = createGlobalStyle`
         --title-font: 'Lexend Peta', sans-serif;
         --body-font: 'Lexend Deca', sans-serif;
         --header-font: 'Inter', sans-serif;
-        background-color: #F7CDB9;
+        --main-color: #F7CDB9;
+        /* background-color: #F7CDB9; */
         --second-color: #FFF2F2;
         --third-color: #946A56;
         --button-color: #C1896D;
+        --image-mobile-height: 110px;
     }
     body *{
         box-sizing: border-box;
@@ -16,6 +18,14 @@ const globalStyle = createGlobalStyle`
     }
     button{
         font-family: var(--body-font);
+    }
+
+    @-webkit-keyframes animate {
+        0% {
+        }
+        100% {
+            height: 100vh;
+        }
     }
 
 `;

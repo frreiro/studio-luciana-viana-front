@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { TokenContext } from '../../context/tokenContext.jsx';
 import { updateHistoric } from '../../services/historic.js';
 import { createHistoric } from '../../services/historic.js';
-import { RadioGroupInput, RadioCouple, Form, Button } from '../utils/formUtils.js';
+import { RadioGroupInput, RadioCouple, Form } from '../utils/formUtils.js';
 
 
-export default function HistoricForm({ enableForm, historic }) {
+export default function HistoricForm({ enableForm, historic, setIsFlipped, isFlipped }) {
     const { register, handleSubmit, watch, setValue } = useForm({
     });
     const isEdditing = Object.keys(historic).length > 1 ? true : false;
@@ -46,7 +46,9 @@ export default function HistoricForm({ enableForm, historic }) {
         }
         else await createHistoric(formData, token);
 
-        enableForm(false);
+        setIsFlipped(!isFlipped);
+        setTimeout(() => enableForm(false), 100);
+
     }
 
     return (
@@ -90,8 +92,9 @@ export default function HistoricForm({ enableForm, historic }) {
                     name={'pregnancy'}
                     title={'Gravidez:'}
                 />
-                <Button type='submit'>SALVAR</Button>
+                <button type='submit'>SALVAR</button>
             </Form>
         </>
     );
 }
+

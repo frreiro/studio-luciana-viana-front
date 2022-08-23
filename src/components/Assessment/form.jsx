@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { TokenContext } from '../../context/tokenContext.jsx';
-import { RadioCouple, RadioGroupInput, RadioQuadriple, RadioTriple, Form, Button } from '../utils/formUtils.js';
+import { RadioCouple, RadioGroupInput, RadioQuadriple, RadioTriple, Form } from '../utils/formUtils.js';
 import { createAssessment, updateAssessment } from '../../services/assessment.js';
 
 
-export default function AssessmentForm({ assessment, enableForm }) {
+export default function AssessmentForm({ assessment, enableForm, setIsFlipped, isFlipped }) {
     const { register, handleSubmit, watch, setValue } = useForm({
     });
 
@@ -41,8 +41,11 @@ export default function AssessmentForm({ assessment, enableForm }) {
 
     const { token } = useContext(TokenContext);
     async function onSubmit(data) {
-        console.log(data);
-        if (page === 1) return setPage(page + 1);
+        if (page === 1) {
+            setIsFlipped(!isFlipped);
+            return setTimeout(() => setPage(page + 1), 100);
+        }
+
         const formData = transformFormData(data);
 
         if (isEdditing) {
@@ -135,7 +138,7 @@ export default function AssessmentForm({ assessment, enableForm }) {
                         </>
                     )
                 }
-                <Button type='submit'>{page === 1 ? 'PRÓXIMO' : 'SALVAR'}</Button>
+                <button type='submit'>{page === 1 ? 'PRÓXIMO' : 'SALVAR'}</button>
             </Form>
         </>
     );

@@ -58,57 +58,62 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 22px 0 22px;
+    /* background-color:red; */
+
 
     div{
-        width: 375px;
+        width: 243px;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
     }
 
     .checkbox-group1{
-        margin-top: 90px;
+        /* margin-top: 90px; */
     }
 
     .checkbox-group2{
-        margin-top: 38px;
+        margin-top: 23px;
+        margin-bottom: 150px;
     }
 
     button{
-        width:302px;
-        height:51px;
+        width:145px;
+        height:30px;
         font-family: var(--body-font);
         font-weight: lighter;
-        font-size: 25px;
+        font-size: 16px;
         color: white;
         background-color: var(--button-color);
         border-radius: 5px;
-        margin-top: 78px;
+        position: absolute;
+        bottom: 65px;
     }
 
 `;
 
-const Checkbox = styled.label`
+export const Checkbox = styled.label`
     position: relative;
     display: flex;
     justify-content: center;
 
         p{  
-            margin-top:30px;
-            font-size: 17px;
+            margin-top:20px;
+            font-size: 10px;
             text-align: center;
         }
 
         input{
-            width: 22px;
-            height: 23px;
+            width: 12px;
+            height: 12px;
             opacity: 0;
             cursor: pointer;
             position:absolute;
         }
          .checkbox-custom{
-            width: 22px;
-            height: 23px;
+            width: 12px;
+            height: 12px;
             background-color: #FFFF;
             border-radius: 30px;
             border: solid 2px #FFFF;
@@ -119,7 +124,9 @@ const Checkbox = styled.label`
          input:checked ~ .checkbox-custom{
             background-color: var(--third-color);
             border-radius: 30px;
-            border: solid 4px #FFFF;
+            border: solid 2px #FFFF;
         }
+
+        ${props => props.customStyle}
 
 `;

@@ -9,8 +9,22 @@ export { RadioCouple, RadioGroupInput, RadioQuadriple, RadioTriple, Form, Button
 
 
 const Form = styled.form`
+    height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+    button{
+        width:145px;
+        height:30px;
+        font-family: var(--body-font);
+        font-weight: lighter;
+        font-size: 16px;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
 `;
 
 const Button = styled.button`
