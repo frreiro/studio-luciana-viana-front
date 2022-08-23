@@ -46,6 +46,7 @@ export const Form = styled.form`
     flex-direction: column;
     align-items: center;
     padding: 0 22px 0 22px;
+    /* position: relative; */
     
     input{
         width: 200px;
@@ -73,8 +74,15 @@ export const Form = styled.form`
         margin-top: 0px;
     }
     
-    input:last-of-type{
+    :nth-child(3){
         margin-bottom: 80px;
+    }
+
+    .error{
+        margin-top: 1px;
+
+        /* margin-top: 10px; */
+        /* background-color: red; */
     }
     
     button{
@@ -88,5 +96,11 @@ export const Form = styled.form`
         border-radius: 5px;
         position: absolute;
         bottom: 65px;
+    }
+
+    p{
+        /* margin-top: 1px; */
+        font-size: 10px;
+        color: #ff4040 ;
     }
 `;
