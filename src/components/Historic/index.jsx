@@ -8,54 +8,57 @@ import { TokenContext } from '../../context/tokenContext.jsx';
 import { getHistoric } from '../../services/historic.js';
 import LogoWithBackground from '../Logo/index.jsx';
 import Footer from '../Footer/index.jsx';
+import { Breakpoint } from 'react-socks';
 
 
 export default function Historic() {
 
-    const [historic, setHistoric] = useState({});
-    const [enableForm, setEnableForm] = useState(false);
-    const [isFlipped, setIsFlipped] = useState(false);
+	const [historic, setHistoric] = useState({});
+	const [enableForm, setEnableForm] = useState(false);
+	const [isFlipped, setIsFlipped] = useState(false);
 
-    const { token } = useContext(TokenContext);
-    const navigate = useNavigate();
+	const { token } = useContext(TokenContext);
+	const navigate = useNavigate();
 
-    useEffect(async () => {
-        if (!token) navigate('/');
+	useEffect(async () => {
+		if (!token) navigate('/');
 
-        const userHistoric = await getHistoric(token);
-        if (userHistoric) return setHistoric(userHistoric);
+		const userHistoric = await getHistoric(token);
+		if (userHistoric) return setHistoric(userHistoric);
 
-    }, [enableForm]);
+	}, [enableForm]);
 
-    return (
-        <Container customStyle={'justify-content: normal; padding-top: 30px;'}>
-            <LogoWithBackground />
-            <FlipCard className={isFlipped ? 'show-back' : ''}>
-                <CardInner>
-                    <Banner className={isFlipped ? 'show-back' : ''}>
-                        <Title>
-                            <h1>HISTÓRICO</h1>
-                            <hr />
-                        </Title>
-                        {!enableForm && Object.keys(historic).length > 1
-                            ? <HistoricUser historic={historic} enableForm={setEnableForm} isFlipped={isFlipped} setIsFlipped={setIsFlipped} />
-                            : enableForm ? <HistoricForm enableForm={setEnableForm} historic={historic} isFlipped={isFlipped} setIsFlipped={setIsFlipped} />
-                                : <NotFound>
-                                    <p className='not-found'>
-                                        Nenhum histórico cadastrado
-                                    </p>
-                                    <button onClick={() => {
-                                        setIsFlipped(isFlipped);
-                                        setTimeout(() => setEnableForm(!enableForm), 100);
-                                    }}>CADASTRAR</button>
-                                </NotFound>
-                        }
-                    </Banner>
-                </CardInner>
-            </FlipCard>
-            <Footer />
-        </Container>
-    );
+	return (
+		<Container customStyle={'justify-content: normal; padding-top: 30px;'}>
+			<LogoWithBackground />
+			<FlipCard className={isFlipped ? 'show-back' : ''}>
+				<CardInner>
+					<Banner className={isFlipped ? 'show-back' : ''}>
+						<Title>
+							<h1>HISTÓRICO</h1>
+							<hr />
+						</Title>
+						{!enableForm && Object.keys(historic).length > 1
+							? <HistoricUser historic={historic} enableForm={setEnableForm} isFlipped={isFlipped} setIsFlipped={setIsFlipped} />
+							: enableForm ? <HistoricForm enableForm={setEnableForm} historic={historic} isFlipped={isFlipped} setIsFlipped={setIsFlipped} />
+								: <NotFound>
+									<p className='not-found'>
+										Nenhum histórico cadastrado
+									</p>
+									<button onClick={() => {
+										setIsFlipped(isFlipped);
+										setTimeout(() => setEnableForm(!enableForm), 100);
+									}}>CADASTRAR</button>
+								</NotFound>
+						}
+					</Banner>
+				</CardInner>
+			</FlipCard>
+			<Breakpoint small down>
+				<Footer />
+			</Breakpoint>
+		</Container>
+	);
 }
 
 export const NotFound = styled.div`

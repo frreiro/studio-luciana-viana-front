@@ -4,21 +4,21 @@ import { useNavigate } from 'react-router';
 import { Container } from '../../css/general.jsx';
 
 
-export default function Footer() {
-    const navigate = useNavigate();
-    const [footerUp, setFooterUp] = useState(false);
+export default function Footer({ backgroundColor }) {
+	const navigate = useNavigate();
+	const [footerUp, setFooterUp] = useState(false);
 
-    function clickFooter() {
-        setFooterUp(true);
-        setTimeout(() => navigate('/menu'), 1000);
-    }
+	function clickFooter() {
+		setFooterUp(true);
+		setTimeout(() => navigate('/menu'), 1000);
+	}
 
-    return (
-        <FootContainer className={footerUp ? 'footer-up' : ''} onClick={clickFooter}>
-            <h1>MENU</h1>
+	return (
+		<FootContainer className={footerUp ? 'footer-up' : ''} backgroundColor={backgroundColor} onClick={clickFooter}>
+			<h1>MENU</h1>
 
-        </FootContainer>
-    );
+		</FootContainer>
+	);
 }
 
 const FootContainer = styled.footer`
@@ -28,6 +28,7 @@ const FootContainer = styled.footer`
     background-color:  ${props => props.backgroundColor ? props.backgroundColor : 'var(--second-color)'};
     position: fixed;
     bottom: 0;
+	left: 0;
 
     display: flex;
     justify-content: center;

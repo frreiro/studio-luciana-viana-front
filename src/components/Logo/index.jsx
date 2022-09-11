@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import LogoBackground from '../../assets/Logo_c_fundo@4x.png';
 
 export default function LogoWithBackground({ inBanner }) {
-    return (
-        <>
-            {inBanner ?
-                <LogoInBanner src={LogoBackground} />
-                :
-                <LogoOffBanner src={LogoBackground} />
-            }
-        </>
-    );
+	return (
+		<>
+			{inBanner ?
+				<LogoInBanner src={LogoBackground} />
+				:
+				<LogoOffBanner src={LogoBackground} />
+			}
+		</>
+	);
 }
 
 export const LogoInBanner = styled.img`
@@ -22,5 +22,5 @@ export const LogoInBanner = styled.img`
 
 export const LogoOffBanner = styled.img`
   height:  var(--image-mobile-height);
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 `;

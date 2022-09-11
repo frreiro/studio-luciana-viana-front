@@ -27,11 +27,4 @@ export default function Calendly({ user, spots, setOpen, openCalendly }) {
 }
 
 
-// const StyleSheet = {
-//     'width': 'calc(100vw - 300px)',
-//     'height': '710px',
-//     'marginLeft': '50px',
-//     'borderRadius': '10px',
-// };
-
 

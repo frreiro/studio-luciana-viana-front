@@ -25,14 +25,6 @@ footer {
    background-color: ${props => props.colorInverted ? 'var(--main-color)' : 'var(--second-color)'};
 }
 
-@media(max-width: 620px) {
-    margin-bottom: 60px
-    }
-
-/* @media(min-width: 620px) {
-    height: calc(100vh + 100px);
-        
-    } */
 `;
 
 export const CardInner = styled.div`
@@ -75,7 +67,7 @@ a{
     font-weight: lighter;
     font-size: 10px;
     color: var(--button-color);
-    margin-bottom: 40px;
+    /*margin-bottom: 40px;*/
     opacity: 0.7;
 }
 

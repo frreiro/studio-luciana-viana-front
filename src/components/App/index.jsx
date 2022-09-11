@@ -10,24 +10,27 @@ import Historic from '../Historic/index.jsx';
 import { UserProvider } from '../../context/userContext.jsx';
 import Assessment from '../Assessment/index.jsx';
 import Menu from '../Menu/index.jsx';
+import  {BreakpointProvider } from 'react-socks';
 
 export default function App() {
     return (
-        <BrowserRouter>
-            <ResetStyles />
-            <GlobalStyles />
-            <TokenProvider>
-                <UserProvider>
-                    <Routes>
-                        <Route path="/" element={<Login />} />
-                        <Route path="/signup" element={<Signup />} />
-                        <Route path="/booking" element={<Booking />} />
-                        <Route path="/historic" element={<Historic />} />
-                        <Route path="/assessment" element={<Assessment />} />
-                        <Route path="/menu" element={<Menu />} />
-                    </Routes>
-                </UserProvider>
-            </TokenProvider>
-        </BrowserRouter>
+		<BreakpointProvider>
+			<BrowserRouter>
+				<ResetStyles />
+				<GlobalStyles />
+				<TokenProvider>
+					<UserProvider>
+						<Routes>
+							<Route path="/" element={<Login />} />
+							<Route path="/signup" element={<Signup />} />
+							<Route path="/booking" element={<Booking />} />
+							<Route path="/historic" element={<Historic />} />
+							<Route path="/assessment" element={<Assessment />} />
+							<Route path="/menu" element={<Menu />} />
+						</Routes>
+					</UserProvider>
+				</TokenProvider>
+			</BrowserRouter>
+			</BreakpointProvider>
     );
 }
