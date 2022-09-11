@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+<div align="center">
+  <img width="200" height="200" src="https://studio-luciana-viana-front.vercel.app/static/media/Logo_c_fundo@4x.8125ea6d.png" />
+</div>
+<h1 align="center">Studio Luciana Viana</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 💻 Sobre o projeto
 
-## Available Scripts
 
-In the project directory, you can run:
+O projeto é um aplicativo chamado Studio Luciana Viana, um aplicativo pessoal, com foco em trazer tecnologia para um estúdio de epilação. Nele o usuário pode realizar os agendamentos com a depiladora Luciana, ele irá te informar quais são os horário disponíveis para o agendamento, e após agendar, irá incluir ao seu calendário pessoal.
 
-### `npm start`
+O projeto teve o uso de React e utilizou alguns conceitos como:
+  - React Router
+  - API
+  - Axios
+  - ContextAPI
+  - Styled Components
+  - LocalStorage
+  - Calendly
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+E algumas bibliotecas: 
+  - [React Hook Form](https://react-hook-form.com/)
+  - [React Calendly](https://www.npmjs.com/package/react-calendly)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📱 Mobile
 
-### `npm test`
+<p align="center">
+    <img alt="gif-studio.com" src="https://user-images.githubusercontent.com/98192816/189542936-8054b93a-bf03-4760-8556-2d10999cbb72.png">
+    <img alt="gif-studio.com" src="https://user-images.githubusercontent.com/98192816/189542848-62ce622e-bf06-4466-ac5f-8e2bffc6327e.png">
+    <img alt="gif-studio.com" src="https://user-images.githubusercontent.com/98192816/189542850-79ea553a-d9c1-42ca-9aee-8e03fe7ccc3b.png">
+    <img alt="gif-studio.com" src="https://user-images.githubusercontent.com/98192816/189542852-3d9f6687-6401-4e46-9fb9-50e5a189c0ee.png">
+</p><br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 Tecnologias
 
-### `npm run build`
+As seguintes ferramentas foram usadas na construção do projeto:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - HTML
+  - CSS
+  - Javascript
+  - [React](https://pt-br.reactjs.org/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🎨 Deploy
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ O deploy do projeto pode ser econtrado no seguinte link: 
+  
+  <a target="_blank" href="https://studio-luciana-viana-front.vercel.app/">
+  <img alt="deploy-site" src="https://img.shields.io/badge/Link%20Deploy%20-Site-%2304D361">
+</a>
