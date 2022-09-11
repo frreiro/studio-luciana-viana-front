@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://studio-luciana-back.herokuapp.com',
+    baseURL: process.env.BASE_URL,
 });
 
 export default api;
