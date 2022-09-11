@@ -4,30 +4,30 @@ import { Checkbox } from '../Booking/radioForm.jsx';
 
 export default function RadioGroupInput({ watch, setValue, register, name, placeholder, title }) {
 
-    function parseInputValue(booleanInputName, inputName) {
-        const watchInput = JSON.parse(watch(booleanInputName, false));
-        if (!watchInput) setValue(inputName, null);
-        return watchInput;
-    }
+	function parseInputValue(booleanInputName, inputName) {
+		const watchInput = JSON.parse(watch(booleanInputName, false));
+		if (!watchInput) setValue(inputName, null);
+		return watchInput;
+	}
 
-    return (
-        <RadioGroup>
-            <Title>{title}</Title>
-            <InputGroup>
-                <Checkbox >
-                    <input type='radio' value={false} defaultChecked={true} {...register(`${name.concat('Boolean')}`)} />
-                    <span className='checkbox-custom'></span>
-                    <p>NÃO</p>
-                </Checkbox>
-                <Checkbox >
-                    <input type='radio' value={true} {...register(`${name.concat('Boolean')}`)} />
-                    <span className='checkbox-custom'></span>
-                    <p>SIM</p>
-                </Checkbox>
-                <InputText placeholder={placeholder} disabled={!parseInputValue(name.concat('Boolean'), name)} type='text' {...register(`${name}`)} />
-            </InputGroup>
-        </RadioGroup>
-    );
+	return (
+		<RadioGroup>
+			<Title>{title}</Title>
+			<InputGroup>
+				<Checkbox >
+					<input type='radio' value={false} defaultChecked={true} {...register(`${name.concat('Boolean')}`)} />
+					<span className='checkbox-custom'></span>
+					<p>NÃO</p>
+				</Checkbox>
+				<Checkbox >
+					<input type='radio' value={true} {...register(`${name.concat('Boolean')}`)} />
+					<span className='checkbox-custom'></span>
+					<p>SIM</p>
+				</Checkbox>
+				<InputText placeholder={placeholder} disabled={!parseInputValue(name.concat('Boolean'), name)} type='text' {...register(`${name}`)} />
+			</InputGroup>
+		</RadioGroup>
+	);
 }
 
 
@@ -115,5 +115,4 @@ export const Title = styled.p`
     font-size: 10px;
     font-family: var(--body-font);
     font-weight: 700;
-    /* margin-bottom: 12px; */
 `;

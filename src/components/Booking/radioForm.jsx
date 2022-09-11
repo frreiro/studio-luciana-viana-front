@@ -3,55 +3,55 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 
 export default function RadioForm({ onSubmit }) {
-    const { register, handleSubmit } = useForm({
-    });
+	const { register, handleSubmit } = useForm({
+	});
 
-    return (
-        <>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <div className='checkbox-group1'>
-                    <Checkbox >
-                        <input type='checkbox'  {...register('buço')} />
-                        <span className='checkbox-custom'></span>
-                        <p>BUÇO</p>
-                    </Checkbox>
-                    <Checkbox >
-                        <input type='checkbox'  {...register('rosto')} />
-                        <span className='checkbox-custom'></span>
-                        <p>ROSTO</p>
-                    </Checkbox>
-                    <Checkbox >
-                        <input type='checkbox' {...register('axila')} />
-                        <span className='checkbox-custom'></span>
-                        <p>AXILA</p>
-                    </Checkbox>
-                    <Checkbox >
-                        <input type='checkbox'  {...register('abdômen')} />
-                        <span className='checkbox-custom'></span>
-                        <p>ABDÔMEN</p>
-                    </Checkbox>
-                </div>
-                <div className='checkbox-group2'>
-                    <Checkbox >
-                        <input type='checkbox' {...register('virilha-completa')} />
-                        <span className='checkbox-custom'></span>
-                        <p>VIRILHA<br />COMPLETA</p>
-                    </Checkbox>
-                    <Checkbox >
-                        <input type='checkbox' {...register('perna-meia')} />
-                        <span className='checkbox-custom'></span>
-                        <p>MEIA<br />PERNA</p>
-                    </Checkbox>
-                    <Checkbox >
-                        <input type='checkbox' {...register('perna-completa')} />
-                        <span className='checkbox-custom'></span>
-                        <p>PERNA<br />INTEIRA</p>
-                    </Checkbox>
-                </div>
-                <button type='submit'>PRÓXIMO</button>
-            </Form>
-        </>
-    );
+	return (
+		<>
+			<Form onSubmit={handleSubmit(onSubmit)}>
+				<div className='checkbox-group1'>
+					<Checkbox >
+						<input type='checkbox'  {...register('buço')} />
+						<span className='checkbox-custom'></span>
+						<p>BUÇO</p>
+					</Checkbox>
+					<Checkbox >
+						<input type='checkbox'  {...register('rosto')} />
+						<span className='checkbox-custom'></span>
+						<p>ROSTO</p>
+					</Checkbox>
+					<Checkbox >
+						<input type='checkbox' {...register('axila')} />
+						<span className='checkbox-custom'></span>
+						<p>AXILA</p>
+					</Checkbox>
+					<Checkbox >
+						<input type='checkbox'  {...register('abdômen')} />
+						<span className='checkbox-custom'></span>
+						<p>ABDÔMEN</p>
+					</Checkbox>
+				</div>
+				<div className='checkbox-group2'>
+					<Checkbox >
+						<input type='checkbox' {...register('virilha-completa')} />
+						<span className='checkbox-custom'></span>
+						<p>VIRILHA<br />COMPLETA</p>
+					</Checkbox>
+					<Checkbox >
+						<input type='checkbox' {...register('perna-meia')} />
+						<span className='checkbox-custom'></span>
+						<p>MEIA<br />PERNA</p>
+					</Checkbox>
+					<Checkbox >
+						<input type='checkbox' {...register('perna-completa')} />
+						<span className='checkbox-custom'></span>
+						<p>PERNA<br />INTEIRA</p>
+					</Checkbox>
+				</div>
+				<button type='submit'>PRÓXIMO</button>
+			</Form>
+		</>
+	);
 }
 
 const Form = styled.form`
@@ -59,7 +59,6 @@ const Form = styled.form`
     flex-direction: column;
     align-items: center;
     padding: 0 22px 0 22px;
-    /* background-color:red; */
 
 
     div{
@@ -70,7 +69,6 @@ const Form = styled.form`
     }
 
     .checkbox-group1{
-        /* margin-top: 90px; */
     }
 
     .checkbox-group2{

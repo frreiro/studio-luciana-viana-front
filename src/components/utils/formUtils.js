@@ -13,7 +13,7 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-between; */
+
     button{
         width:145px;
         height:30px;
@@ -25,6 +25,8 @@ const Form = styled.form`
         border-radius: 5px;
         margin-bottom: 5px;
     }
+
+	
 `;
 
 const Button = styled.button`
