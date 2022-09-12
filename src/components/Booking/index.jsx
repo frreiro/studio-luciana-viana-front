@@ -9,10 +9,9 @@ import Calendly from './calendly.jsx';
 import { getAssesment } from '../../services/assessment.js';
 import { Banner, Container, Title } from '../../css/general.jsx';
 import LogoWithBackground from '../Logo/index.jsx';
-import Footer from '../Footer/index.jsx';
 import { NotFound } from '../Historic/index.jsx';
 import { useNavigate } from 'react-router';
-import { Breakpoint } from 'react-socks';
+import HeaderFooter from '../HeaderFooter/index.jsx';
 
 
 
@@ -95,9 +94,7 @@ export default function Booking() {
 									</>
 						}
 					</Banner>
-					<Breakpoint small down>
-						<Footer />
-					</Breakpoint>
+					<HeaderFooter />
 				</>
 			}
 		</Container>

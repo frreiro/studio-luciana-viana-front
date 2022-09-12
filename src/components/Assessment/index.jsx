@@ -8,8 +8,7 @@ import AssessmentUser from './assessmentUser.jsx';
 import { Container, Title, Banner, CardInner, FlipCard } from '../../css/general.jsx';
 import { NotFound } from '../Historic/index.jsx';
 import LogoWithBackground from '../Logo/index.jsx';
-import Footer from '../Footer/index.jsx';
-import { Breakpoint } from 'react-socks';
+import HeaderFooter from '../HeaderFooter/index.jsx';
 
 
 
@@ -58,9 +57,7 @@ export default function Assessment() {
 					</Banner>
 				</CardInner>
 			</FlipCard>
-			<Breakpoint small down>
-				<Footer />
-			</Breakpoint>
+			<HeaderFooter />
 		</Container>
 	);
 }

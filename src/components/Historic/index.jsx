@@ -7,8 +7,7 @@ import { Container, Title, Banner, CardInner, FlipCard } from '../../css/general
 import { TokenContext } from '../../context/tokenContext.jsx';
 import { getHistoric } from '../../services/historic.js';
 import LogoWithBackground from '../Logo/index.jsx';
-import Footer from '../Footer/index.jsx';
-import { Breakpoint } from 'react-socks';
+import HeaderFooter from '../HeaderFooter/index.jsx';
 
 
 export default function Historic() {
@@ -54,9 +53,7 @@ export default function Historic() {
 					</Banner>
 				</CardInner>
 			</FlipCard>
-			<Breakpoint small down>
-				<Footer />
-			</Breakpoint>
+			<HeaderFooter />
 		</Container>
 	);
 }

@@ -28,6 +28,38 @@ const globalStyle = createGlobalStyle`
         }
     }
 
+	@-webkit-keyframes animate-rotation {
+        0% {
+			opacity: 100%;
+
+        }
+		50%{
+			opacity: 50%;
+
+		}
+        100% {
+			opacity: 0%;
+			rotate: 360deg;
+			visibility: hidden;
+        }
+    }
+
+	@-webkit-keyframes animate-rotation-to-x {
+        0% {
+			opacity: 0%;
+
+        }
+		50%{
+			opacity: 50%;
+
+		}
+        100% {
+			opacity: 100%;
+			rotate: 360deg;
+
+        }
+    }
+
 `;
 
 export default globalStyle;

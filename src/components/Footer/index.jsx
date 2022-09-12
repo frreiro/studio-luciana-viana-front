@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
 
+
 export default function Footer({ backgroundColor }) {
 	const navigate = useNavigate();
 	const [footerUp, setFooterUp] = useState(false);
@@ -14,7 +15,6 @@ export default function Footer({ backgroundColor }) {
 	return (
 		<FootContainer className={footerUp ? 'footer-up' : ''} backgroundColor={backgroundColor} onClick={clickFooter}>
 			<h1>MENU</h1>
-
 		</FootContainer>
 	);
 }
@@ -38,8 +38,6 @@ const FootContainer = styled.footer`
         -webkit-animation-duration: 1s;
         -webkit-animation-fill-mode: forwards;
     }
-
- 
 
     h1{
         font-family: var(--title-font);

@@ -22,7 +22,6 @@ a{
     font-weight: lighter;
     font-size: 10px;
     color: var(--button-color);
-    /*margin-bottom: 40px;*/
     opacity: 0.7;
 }
 
@@ -46,6 +45,10 @@ hr{
     height: 2px;
     background-color: var(--third-color);
 }
+
+ &.clickable{
+	cursor: pointer;
+ }
 
 `;
 
