@@ -11,34 +11,34 @@ import { loginUser } from '../../services/authenticate.js';
 
 
 export default function LoginForm() {
-    const { register, formState: { errors }, handleSubmit } = useForm({
-        resolver: joiResolver(loginSchema),
-        criteriaMode: 'all',
-    });
+	const { register, formState: { errors }, handleSubmit } = useForm({
+		resolver: joiResolver(loginSchema),
+		criteriaMode: 'all',
+	});
 
-    const navigate = useNavigate();
-    const { setToken } = useContext(TokenContext);
-    async function onSubmit(data) {
-        const token = await loginUser(data);
-        localStorage.setItem('studio-token', token);
-        setToken(token);
-        navigate('/booking');
-    }
+	const navigate = useNavigate();
+	const { setToken } = useContext(TokenContext);
+	async function onSubmit(data) {
+		const token = await loginUser(data);
+		localStorage.setItem('studio-token', token);
+		setToken(token);
+		navigate('/booking');
+	}
 
-    function handleError({ message }) {
-        return <p className='error'>{message}</p>;
-    }
-    return (
-        <>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <input placeholder='Email' type='email' {...register('email')} />
-                <ErrorMessage name='email' errors={errors} render={handleError} />
-                <input placeholder='Senha' type='password' {...register('password')} />
-                <ErrorMessage name='password' errors={errors} render={handleError} />
-                <button type='submit'>ENTRAR</button>
-            </Form>
-        </>
-    );
+	function handleError({ message }) {
+		return <p className='error'>{message}</p>;
+	}
+	return (
+		<>
+			<Form onSubmit={handleSubmit(onSubmit)}>
+				<input placeholder='Email' type='email' {...register('email')} />
+				<ErrorMessage name='email' errors={errors} render={handleError} />
+				<input placeholder='Senha' type='password' {...register('password')} />
+				<ErrorMessage name='password' errors={errors} render={handleError} />
+				<button type='submit'>ENTRAR</button>
+			</Form>
+		</>
+	);
 }
 
 export const Form = styled.form`
@@ -80,9 +80,6 @@ export const Form = styled.form`
 
     .error{
         margin-top: 1px;
-
-        /* margin-top: 10px; */
-        /* background-color: red; */
     }
     
     button{
@@ -99,7 +96,6 @@ export const Form = styled.form`
     }
 
     p{
-        /* margin-top: 1px; */
         font-size: 10px;
         color: #ff4040 ;
     }

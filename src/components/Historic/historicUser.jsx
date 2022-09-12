@@ -58,6 +58,12 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+padding-right: 20px;
+padding-left: 20px;
+
+    div{
+		width: 100%;
+	}
 
     button{
         width:145px;
@@ -71,6 +77,15 @@ justify-content: center;
         border-radius: 5px;
     }
 
+	${RadioGroup}{
+		padding: 0;
+		padding-left: 20px;
+	}
+
+	${HiddenDiv}{
+		width: 50%;
+
+	}
 
     ${Checkbox}{
         .checked{
@@ -84,37 +99,32 @@ justify-content: center;
 	@media(min-width: 600px){
 		padding-right: 20px;
 		padding-left: 20px;
+
+		${HiddenDiv}{
+		width: 75%;
+
+	}
+
+		${RadioGroup}{
+			padding: 0;
+
+		}
 		
 		${Title}{
 				font-size: 14px;
 			}
-
-		div{
-			width: 100%;
-		
-		}
-
 		button {
 			margin-top: 0;
 		}
 
-		${RadioGroup}{
-			padding: 0;
-		}
 
 		${Checkbox}{
-			margin-right: 20px;
-			input,.checkbox-custom{
-				width: 20px;
-				height: 20px;
-			}
-
-			p{
-				font-size: 10px;
-			}
-		}
-
-
+        .checked{
+            background-color: var(--third-color);
+            border-radius: 30px;
+            border: solid 3px #FFFF;
+     }
+    }
 	}
 
 `;

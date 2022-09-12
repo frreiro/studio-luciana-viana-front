@@ -26,6 +26,10 @@ a{
     opacity: 0.7;
 }
 
+	@media(min-width: 600px){
+		height: 420px;
+	}
+
 `;
 
 export const Title = styled.div`
@@ -36,7 +40,6 @@ font-size: 16px;
 display: flex;
 flex-direction: column;
 align-items: center;
-/* padding: 40px 0 5px 0; */
 
 hr{
     width: 170px;

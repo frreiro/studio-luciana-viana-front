@@ -29,7 +29,7 @@ export default function Historic() {
 	}, [enableForm]);
 
 	return (
-		<Container customStyle={'justify-content: normal; padding-top: 30px;'}>
+		<Container customStyle={'justify-content: normal; padding-top: 20px;'}>
 			<LogoWithBackground />
 			<FlipCard className={isFlipped ? 'show-back' : ''}>
 				<CardInner>

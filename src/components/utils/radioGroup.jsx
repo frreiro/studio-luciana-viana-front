@@ -31,45 +31,10 @@ export default function RadioGroupInput({ watch, setValue, register, name, place
 }
 
 
-// const RadioBox = styled.label`
-//     position: relative;
-//     display: flex;
-//     justify-content: center;
-//     /* padding-right: 48px; */
-
-//         p{  
-//             margin-top:20px;
-//             font-size: 10px;
-//             text-align: center;
-//         }
-
-//         input{
-//             width: 12px;
-//             height: 12px;
-//             opacity: 0;
-//             cursor: pointer;
-//             position:absolute;
-//         }
-//          .checkbox-custom{
-//             width: 12px;
-//             height: 12px;
-//             background-color: #FFFF;
-//             border-radius: 30px;
-//             border: solid 2px #FFFF;
-//             position: absolute;
-//             top: 0;
-//         }
-
-//          input:checked ~ .checkbox-custom{
-//             background-color: var(--third-color);
-//             border-radius: 30px;
-//             border: solid 2px #FFFF;
-//         }
-
-// `;
 
 export const RadioGroup = styled.div`
-    width: 243px;
+	width: 100%;
+    min-width: 243px;
     padding: 0 10px 0 10px;
     margin-bottom: 10px;
     ${Checkbox}{
@@ -77,6 +42,31 @@ export const RadioGroup = styled.div`
             font-size: 8px;
         }
     }
+
+
+	@media(min-width: 600px){
+		padding: 0 20px 0 20px;
+
+
+		${Checkbox}{
+			margin-right: 20px;
+			input,.checkbox-custom{
+				width: 20px;
+				height: 20px;
+			}
+
+			input:checked ~ .checkbox-custom{
+            border: solid 3px #FFFF;
+        }
+
+			p{
+				margin-top:24px;
+				font-size: 10px;
+			}
+		}
+
+	}
+
 
 `;
 
@@ -86,27 +76,35 @@ export const InputGroup = styled.div`
         justify-content: space-between;
         align-items: center;
         ${props => props.customStyle}
-        /* background-color: red; */
 `;
 
 
 export const InputText = styled.input`
-        width: 160px;
-        height: 20px;
-        border-radius:5px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        font-family: var(--body-font);
-        font-weight: lighter;
-        color: var(--third-color);
-        font-size: 10px;
-        padding: 0 0 0 7px;
-        margin-bottom: 22px;
+	width: 75%;
+	min-width: 160px;
+	height: 20px;
+	border-radius:5px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	font-family: var(--body-font);
+	font-weight: lighter;
+	color: var(--third-color);
+	font-size: 10px;
+	padding: 0 0 0 7px;
+	margin-bottom: 22px;
 
-        ::placeholder{
-            color: var(--third-color);
-            opacity: 0.7;
-            align-items: center;
-        }
+	::placeholder{
+		color: var(--third-color);
+		opacity: 0.7;
+		align-items: center;
+	}
+
+	@media(min-width: 600px){
+		height: 30px;
+		margin-bottom: 0;
+		font-size: 14px;
+
+
+	}
 
 `;
 
@@ -115,4 +113,10 @@ export const Title = styled.p`
     font-size: 10px;
     font-family: var(--body-font);
     font-weight: 700;
+
+	@media(min-width: 600px){
+		font-size: 13px;
+		margin-bottom: 5px;
+
+	}
 `;

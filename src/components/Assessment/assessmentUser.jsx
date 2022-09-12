@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import styled from 'styled-components';
 import { InputGroup, RadioGroup, Title } from '../utils/radioGroup.jsx';
 import { Checkbox } from '../Booking/radioForm.jsx';
 import { Text, UserHistoric } from '../Historic/historicUser.jsx';
@@ -120,33 +119,3 @@ export default function AssessmentUser({ assessment, enableForm, setIsFlipped, i
 		</>
 	);
 }
-
-//const UserAssessment = styled.div`
-//height: 100%;
-//display: flex;
-//flex-direction: column;
-//align-items: center;
-//justify-content: center;
-
-
-//button{
-//        width:145px;
-//        height:30px;
-//        font-family: var(--body-font);
-//        font-weight: lighter;
-//        font-size: 16px;
-//        color: white;
-//        background-color: var(--button-color);
-//        margin-top: 40px;
-//        border-radius: 5px;
-//    }
-
-
-//    ${Checkbox}{
-//        .checked{
-//            background-color: var(--third-color);
-//            border-radius: 30px;
-//            border: solid 2px #FFFF;
-//     }
-//    }
-//`;

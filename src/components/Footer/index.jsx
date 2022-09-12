@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
-import { Container } from '../../css/general.jsx';
-
 
 export default function Footer({ backgroundColor }) {
 	const navigate = useNavigate();
@@ -34,11 +32,6 @@ const FootContainer = styled.footer`
     justify-content: center;
     align-items: center;
     border-radius: 10px 10px 0 0;
-
-    ${Container} {
-        background-color: red;
-    }
-
 
     &.footer-up{
         -webkit-animation-name: animate;
