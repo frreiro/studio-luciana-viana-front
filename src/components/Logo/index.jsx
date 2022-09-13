@@ -18,14 +18,11 @@ export const LogoInBanner = styled.img`
   height:  var(--image-mobile-height);
   position: absolute;
   top: calc(var(--image-mobile-height) / 2 * -1 );
-  z-index: 2;
-
 `;
 
 export const LogoOffBanner = styled.img`
   height:  var(--image-mobile-height);
   margin-bottom: 18px;
-  z-index: 2;
 
   @media(min-width: 600px){
 	margin-bottom: 10px;

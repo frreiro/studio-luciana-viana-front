@@ -61,9 +61,6 @@ justify-content: center;
 padding-right: 20px;
 padding-left: 20px;
 
-    div{
-		width: 100%;
-	}
 
     button{
         width:145px;
@@ -100,10 +97,14 @@ padding-left: 20px;
 		padding-right: 20px;
 		padding-left: 20px;
 
+		div{
+		width: 100%;
+		}
+
 		${HiddenDiv}{
 		width: 75%;
 
-	}
+		}
 
 		${RadioGroup}{
 			padding: 0;

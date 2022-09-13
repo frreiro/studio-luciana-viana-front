@@ -61,8 +61,9 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 
-
 background-color: ${props => props.colorInverted ? 'var(--second-color)' : 'var(--main-color)'};
+
+
 ${props => props.customStyle}
 
 p, a{
