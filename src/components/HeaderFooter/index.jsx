@@ -9,10 +9,13 @@ export default function HeaderFooter({ backgroundColor }) {
 
 	return (
 		<>
-			<Breakpoint small down>
+			<Breakpoint customQuery="(max-width: 600px) and (min-height: 650px)">
 				<Footer backgroundColor={backgroundColor} />
 			</Breakpoint>
-			<Breakpoint small up>
+			<Breakpoint customQuery="(max-height: 650px)">
+				<Header backgroundColor={backgroundColor} />
+			</Breakpoint>
+			<Breakpoint customQuery="(min-width: 600px)">
 				<Header backgroundColor={backgroundColor} />
 			</Breakpoint>
 		</>
