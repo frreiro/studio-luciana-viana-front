@@ -6,13 +6,13 @@ const globalStyle = createGlobalStyle`
         --body-font: 'Lexend Deca', sans-serif;
         --header-font: 'Inter', sans-serif;
         --main-color: #F7CDB9;
-        /* background-color: #F7CDB9; */
         --second-color: #FFF2F2;
         --third-color: #946A56;
         --button-color: #C1896D;
         --image-mobile-height: 110px;
 		--toastify-color-progress-light: var(--second-color);
 		--toastify-z-index: 2147483648;
+		background-color:var(--main-color);
     }
     body *{
         box-sizing: border-box;

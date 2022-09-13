@@ -20,11 +20,11 @@ export default function LogOut() {
 
 const HeaderTag = styled.header`
     position: absolute;
-    top:75px;
+    top:60px;
     right: 50px;
 	
     ion-icon{
-        font-size: 25px;
+        font-size: 35px;
         color: var(--third-color);
     }
 

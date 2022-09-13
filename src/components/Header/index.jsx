@@ -22,7 +22,7 @@ export default function Header({ backgroundColor }) {
 }
 
 const HeaderContainer = styled.header`
-    position: fixed;
+    position: absolute;
     top:50px;
     left: 50px;
 	z-index: 1;
