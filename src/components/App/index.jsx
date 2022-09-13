@@ -10,10 +10,12 @@ import Historic from '../Historic/index.jsx';
 import { UserProvider } from '../../context/userContext.jsx';
 import Assessment from '../Assessment/index.jsx';
 import Menu from '../Menu/index.jsx';
-import  {BreakpointProvider } from 'react-socks';
+import { BreakpointProvider } from 'react-socks';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
-    return (
+	return (
 		<BreakpointProvider>
 			<BrowserRouter>
 				<ResetStyles />
@@ -30,7 +32,8 @@ export default function App() {
 						</Routes>
 					</UserProvider>
 				</TokenProvider>
+				<ToastContainer />
 			</BrowserRouter>
-			</BreakpointProvider>
-    );
+		</BreakpointProvider>
+	);
 }

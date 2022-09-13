@@ -8,6 +8,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { loginSchema } from '../../schemas/formSchemas';
 import { loginUser } from '../../services/authenticate.js';
+import { toast } from 'react-toastify';
 
 
 export default function LoginForm() {
@@ -19,10 +20,16 @@ export default function LoginForm() {
 	const navigate = useNavigate();
 	const { setToken } = useContext(TokenContext);
 	async function onSubmit(data) {
-		const token = await loginUser(data);
-		localStorage.setItem('studio-token', token);
-		setToken(token);
-		navigate('/booking');
+		try {
+			const token = await loginUser(data);
+			localStorage.setItem('studio-token', token);
+			setToken(token);
+			toast('Login realizado com sucesso!');
+			navigate('/booking');
+		} catch (error) {
+			toast('Não foi possível fazer o login');
+		}
+
 	}
 
 	function handleError({ message }) {

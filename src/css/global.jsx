@@ -11,6 +11,7 @@ const globalStyle = createGlobalStyle`
         --third-color: #946A56;
         --button-color: #C1896D;
         --image-mobile-height: 110px;
+		--toastify-color-progress-light: var(--second-color);
     }
     body *{
         box-sizing: border-box;
