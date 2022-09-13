@@ -23,6 +23,7 @@ a{
     font-size: 10px;
     color: var(--button-color);
     opacity: 0.7;
+	margin-bottom: 40px;
 }
 
 	@media(min-width: 600px){

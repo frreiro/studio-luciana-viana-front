@@ -46,7 +46,6 @@ export const Form = styled.form`
     flex-direction: column;
     align-items: center;
     padding: 0 22px 0 22px;
-    /* position: relative; */
     
     input{
         width: 200px;
