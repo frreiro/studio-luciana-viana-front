@@ -46,3 +46,11 @@ As seguintes ferramentas foram usadas na construção do projeto:
   <a target="_blank" href="https://studio-luciana-viana-front.vercel.app/">
   <img alt="deploy-site" src="https://img.shields.io/badge/Link%20Deploy%20-Site-%2304D361">
 </a>
+
+## 🔙 Back-end
+
+ O back-end do projeto pode ser econtrado no seguinte link: 
+  
+  <a target="_blank" href="https://github.com/frreiro/studio-luciana-viana">
+  <img alt="backend-site" src="https://img.shields.io/badge/Link%20Backend%20-Github-%2304D361">
+</a>
