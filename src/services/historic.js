@@ -23,6 +23,6 @@ export async function getHistoric(token) {
 }
 export async function updateHistoric(data, token, id) {
     console.log(data, token, id);
-    const response = await api.post(`/historic/${id}`, data, config(token));
+    const response = await api.put(`/historic/${id}`, data, config(token));
     return response.data;
 }
